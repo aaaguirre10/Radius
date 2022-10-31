@@ -1,0 +1,9 @@
+.home-brand{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  min-height: 100vh;
+  min-width: 100vw;
+  color: white;
+}

@@ -1,0 +1,12 @@
+html{
+    font-size: 20px;
+}
+
+body{
+    background: rgb(44,82,99);
+    background: linear-gradient(0deg, rgba(44,82,99,1) 21%, rgba(18,37,44,1) 86%);
+    background-repeat:no-repeat;
+    width: 100vw;
+    height: 100vh;
+}
+
