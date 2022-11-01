@@ -1,9 +1,16 @@
 .home-brand{
+  /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
+  height: 100vh;
+  width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* text-align: center; */
-  min-height: 100vh;
-  min-width: 100vw;
+  object-fit: contain;
   color: white;
+}
+
+.Home{
+  height: 100vh;
+  min-width: 100vw;
 }
