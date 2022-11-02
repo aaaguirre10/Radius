@@ -1,0 +1,26 @@
+/* Login Button */
+.login-btn{
+    background-color: rgb(66, 145, 173);
+    width: 100%;
+    font-size: medium;
+}
+
+/* Both input fields from the form*/
+.form-control{
+    background-color: rgb(66, 145, 173);
+    border: 1px solid #000000;
+    font-size: medium;
+    color: white;
+}
+
+/* When input field is selected */
+.form-control:focus{
+    background-color: rgb(66, 145, 173);
+    border: 1px solid #000000;
+    color: white;
+}
+
+.form-control::placeholder{
+    color: lightblue;
+}
+
