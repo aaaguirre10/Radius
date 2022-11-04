@@ -1,0 +1,56 @@
+/* Login Button */
+.radius-title{
+    text-align: center;
+    color: white;
+}
+
+.bottom-border{
+    background-color:#12242B ;
+    width: 100%;
+    height:10%;
+    position: absolute;
+    bottom: 0ch;
+}
+.text-logo{
+background-color: transparent;
+border: none;
+    position: absolute;
+    bottom: 2ch;
+    left: 2.5ch;
+}
+.profile-logo{
+    background-color: transparent;
+    border: none;
+        position: absolute;
+        bottom: 2ch;
+        right: 2.5ch;
+    }
+    .friends-logo{
+        background-color: transparent;
+    border: none;
+        position: absolute;
+        left: 2.5ch;
+        top: 0ch;
+
+    }
+
+    .settings-logo{
+        background-color: transparent;
+     border: none;
+        position: absolute;
+        right: 2.5ch;
+        top: 0ch;
+
+    }
+
+    .pete{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 75%;
+        
+    
+        
+   
+
+    }
