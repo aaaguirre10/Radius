@@ -27,7 +27,7 @@ function Login() {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Control type={passwordShown ? "text" : "password"} placeholder="Password" />
-        <i><span class='material-icons'>visibility</span></i>
+        <i class="fa-thin fa-eye"></i>
         <button onClick={togglePassword}>Show Password</button>
 
       </Form.Group>
