@@ -1,0 +1,126 @@
+.settings-title{
+    position: absolute;
+    color: white;
+    left: 3.5ch;
+}
+
+.bottom-border{
+    background-color:#12242B ;
+    width: 100%;
+    height:10%;
+    position: absolute;
+    bottom: 0ch;
+
+}
+
+.messages-icon{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    bottom: 2ch;
+    left: 3.5ch;
+    
+}
+
+.messages-icon:hover{
+
+    transform: scale(1.25);
+    
+}
+
+.back-icon{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 2ch;
+    left: 3.5ch;
+    
+}
+
+.back-icon:hover{
+
+    transform: scale(1.5);
+    
+}
+
+.account{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 20ch;
+    left: 5ch;
+    
+}
+
+.account:hover{
+
+    transform: scale(1.01);
+    
+}
+
+.chatSettings{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 28ch;
+    left: 5ch;
+    
+}
+
+.chatSettings:hover{
+
+    transform: scale(1.01);
+    
+}
+
+.networks{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 36ch;
+    left: 5ch;
+    
+}
+
+.networks:hover{
+
+    transform: scale(1.01);
+    
+}
+
+.privacy{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 44ch;
+    left: 5ch;
+    
+}
+
+.privacy:hover{
+
+    transform: scale(1.01);
+    
+}
+
+.about{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 52ch;
+    left: 5ch;
+    
+}
+
+.about:hover{
+
+    transform: scale(1.01);
+    
+}

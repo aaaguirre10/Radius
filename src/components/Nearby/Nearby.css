@@ -1,0 +1,59 @@
+.radius-title{
+    text-align: center;
+    color: white;
+}
+
+.nearby-title{
+    text-align: center;
+    color: white;
+}
+.bottom-border{
+    background-color:#12242B ;
+    width: 100%;
+    height:10%;
+    position: absolute;
+    bottom: 0ch;
+
+}
+
+.profile-icon{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 3.5ch;
+    left: 3.5ch;
+    
+}
+
+.profile-icon:hover{
+
+    transform: scale(1.25);
+    
+}
+
+.settings-icon{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 3.5ch;
+    right: 3.5ch;
+    
+}
+
+.settings-icon:hover{
+
+    transform: scale(1.25);
+    
+}
+
+.messages-icon{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    bottom: 2ch;
+    left: 3.5ch;
+    
+}
