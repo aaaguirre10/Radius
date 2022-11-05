@@ -48,9 +48,23 @@ border: none;
         margin-left: auto;
         margin-right: auto;
         width: 75%;
-        
-    
-        
-   
+    }
+    .accept{
+   background-color: green;
+   position: absolute;
 
+   right: 10ch;
+   bottom: 15.5ch;
+    }
+    .decline{
+        background-color: red;
+        position: absolute;
+        left: 10ch;
+        bottom: 15.5ch;
+    }
+    .pete-name{
+        position: absolute;
+        color: black;
+        left: 6ch;
+     
     }

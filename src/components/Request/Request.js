@@ -19,8 +19,14 @@ function Request() {
       <button className='text-logo'> <img src={txt}/></button> 
       <button className='profile-logo'> <img src={prof}/></button> 
       <button className='friends-logo'> <img src={fri}/></button> 
-      <button className='settings-logo'> <img src={set}/></button> 
-      <div className='pete'> <img src={pete}/></div>
+      <button className='settings-logo'> <img src={set}/></button>
+      <div className='pete-name'>Pete is in radius...</div>
+      <div className='pete'><img src={pete}/></div>
+      <button className='decline'>Decline</button>
+      <button className='accept'>Accept</button>
+     
+
+   
       
       
     
