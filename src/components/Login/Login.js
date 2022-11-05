@@ -1,8 +1,14 @@
+// React libraries
 import React from 'react'
-import './Login.css'
+import { useState } from "react";
+
+// Styling
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useState } from "react";
+import './Login.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+
 
 
 
@@ -27,7 +33,8 @@ function Login() {
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Control type={passwordShown ? "text" : "password"} placeholder="Password" />
-        <i class="fa-thin fa-eye"></i>
+        <FontAwesomeIcon icon="fa-thin fa-eye" />
+        <br></br>
         <button onClick={togglePassword}>Show Password</button>
 
       </Form.Group>
