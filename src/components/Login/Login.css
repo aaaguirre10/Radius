@@ -9,7 +9,11 @@
     align-items: center;
     object-fit: contain;
     color: white;
-  }
+}
+
+.login-form-container{
+    width: 50vw;
+}
 
 /* Login Button */
 .login-btn{
@@ -37,3 +41,29 @@
     color: lightblue;
 }
 
+
+.pass-wrapper {
+    position: relative;
+    display: flex;
+    margin-bottom: 14px;
+    justify-content: flex;
+    
+
+}
+
+/* eye-icon position (RESPONSIVE) */
+.icon-position{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    z-index: 200;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* eye-icon effect */
+i:hover {
+    color: #00fcb6;
+    cursor: pointer;
+}
