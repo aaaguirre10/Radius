@@ -20,7 +20,7 @@ export async function fetchProfileLogin(username, password) {
     });
     
     console.log(profileSearchResponse);
-    await submitProfile(id);
+    await submitProfile(id); //TODO: Remove when sign up implemented (sign up will be responsible for creating block)
     return profileSearchResponse['id'];
    return id;
 }

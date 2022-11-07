@@ -24,8 +24,6 @@ function Login() {
   const [password, setPassword] = useState('')
 
   const eye = <FontAwesomeIcon icon={faEye} />;
-
-
   
   // Password toggle handler
   const togglePassword = () => {
@@ -39,7 +37,7 @@ function Login() {
     event.stopPropagation();
     
     setValidated(true);
-    
+
     const loginResponse = await fetchProfileLogin(username, password);
 
     if (loginResponse === 'NOT_FOUND') {
@@ -49,28 +47,6 @@ function Login() {
       //redirect to home screen and log in
       alert('Profile found, redirect to home');
     }
-    /*
-    await fetch('http://localhost:8080/add_block/profile', {
-      method: 'POST',
-      headers : {
-        'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches
-        'Content-Type' : 'application/json'
-      },
-      body : JSON.stringify( {
-        'id': 'TODO',//TODO: Combination of sha256(username+password),
-        'signature': 'TODO', //TODO: rsa.sign(id+'It is me', private_key)
-      })
-    }).then(function (response) {
-      if(response.ok) {
-        response.json().then(function(response) {
-          console.log(response);
-        });
-      }
-      else {
-        alert('Error creating logging in please try again');
-      }
-    });
-    */
   };
 
 
