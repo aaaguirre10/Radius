@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+}
+
+.messages-screen{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.messages-header{
+    color: white;
+    align-items: center;
+    display: flex;
+    height: 50px;
+}
+
+.backarrow-position{
+    display: block;
+    padding-top: 30px;
+    padding-left: 10px;
+}
+
+.tittle-container{
+    margin-left: 5%;
+}
+
+.message-title{
+    color: white;
+}
+
+.searchbar-container{
+    margin: 0 5% 0 5%;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    /* flex: 1; */
+    background-color: darkgray;
+    color: gray;
+    width: 90%;
+    border-radius: 5px;
+}
+
+.searchbar-container > input{
+    border: none;
+    background: transparent;
+    outline-width: 0;
+}
+
+.search-input{
+    width: 90%;
+}
+
+.search-input::placeholder{
+    color: black;
+}
+
+.messages-container{
+    margin: 0 5% 0 5%;
+    overflow-y: scroll;
+}
+
+/* Hides scrollbar for CHROME, SAFARI and OPERA */
+.message-container::-webkit-scrollbar{
+    display: none !important;
+}
+
+/* Hides scrollbar for IE, EDGE, FIREFOX */
+.messages-container{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
