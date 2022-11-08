@@ -1,0 +1,22 @@
+.conversation-screen{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.conversation-header{
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    /* border-bottom: 1px solid lightgray;
+    background-color: red; */
+    margin-left: 5%;
+
+}
+
+.conversation-icon{
+    transform: scale(1.8);
+}
+
+

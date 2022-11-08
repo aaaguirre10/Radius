@@ -1,0 +1,117 @@
+/* The following CSS effects only the login page */
+/* Styling code that is related to each other has been split into sections. */
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* Signup-screen */
+.signup-screen{
+    /* background: url('/images/img-home.jpg') center center/cover no-repeat; */
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    color: white;
+}
+
+/* The container for the signup form */
+.create-form-container{
+    width: 50vw;
+}
+
+.signup-title{
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* Both input fields from the form*/
+.form-control{
+    background-color: rgb(66, 145, 173);
+    border: 1px solid #000000;
+    font-size: medium;
+    color: white;
+    /* border-radius: 10px; */
+}
+
+/* When input field is selected */
+.form-control:focus{
+    background-color: rgb(66, 145, 173);
+    border: 1px solid #000000;
+    color: white;
+}
+
+/* Text color for placeholder */
+.form-control::placeholder{
+    color: lightblue;
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* Login Button */
+.signup-btn{
+    background-color: rgb(66, 145, 173);
+    width: 100%;
+    font-size: medium;
+    /* border-radius: 10px; */
+}
+
+.signup-btn:hover{
+    background-color: #1C5E76;
+    border: 1px solid #000000;
+    /* border-radius: 50px; */
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* Positions the eye inside the password section */
+.pass-wrapper {
+    position: relative;
+    /* display: flex; */
+    margin-bottom: 14px;
+    justify-content: flex;
+}
+
+/* Remove the exclamation point for invalid inputs */
+.form-control.is-valid, .pass, .password-input:invalid{
+    background-image: none !important;
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* Eye-icon position (RESPONSIVE) */
+.icon-position{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    z-index: 200;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Eye-icon effect */
+.icon-position:hover {
+    color: #234A60;
+    cursor: pointer;
+}
+/* --------------------------------------------------------------------------------------------- */
+
+/* Forgot Password font size and position */
+.forgot-password{
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.forgot-password:hover{
+    color: #4291AD;
+}
+/* --------------------------------------------------------------------------------------------- */
+
+/* Remember Me font size */
+.remember-me{
+    font-size: 14px;
+}
