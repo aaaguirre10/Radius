@@ -1,5 +1,6 @@
+from geopy.geocoders import Nominatim
 import bluetooth
-
+import os
 import socket
 
 def get_nearby():
@@ -24,4 +25,17 @@ def get_port():
     
     return port
 
-get_port()
+def get_geoloc():
+
+    # calling the Nominatim tool
+    loc = Nominatim(user_agent = "GetLoc")
+
+    # get host address    
+    host = os.getenv('IP', '0.0.0.0') 
+    
+    # getting location from ip address
+    getLoc = loc.geocode(host)
+    
+    print(getLoc.address)
+    
+    return getLoc.address
