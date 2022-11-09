@@ -14,6 +14,7 @@
     align-items: center;
     object-fit: contain;
     color: white;
+    overflow-y: scroll;
 }
 
 /* The container for the signup form */
@@ -114,4 +115,10 @@
 /* Remember Me font size */
 .remember-me{
     font-size: 14px;
+}
+
+.avatar-container{
+    display: flex;
+    flex-direction: row;
+    /* width: 100; */
 }

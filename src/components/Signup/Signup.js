@@ -3,7 +3,47 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Signup.css'
 
+const sprites = [
+  "male",
+  "female",
+  "human",
+  "identicon",
+  "initials",
+  "bottts",
+  "avataaars",
+  "jdenticon",
+  "gridy",
+  "micah"
+];
+
 function Signup() {
+
+  const [imgURL, setImgURL] = React.useState("");
+  const [inputVal, setInputVal] = React.useState("");
+  const [selectedSprite, setSelectedSprite] = React.useState(sprites[0]);
+
+  const handleInputChange = (e) => {
+    setInputVal(() => {
+      if (e.target.value.length > 0) {
+        setImgURL(
+          `https://avatars.dicebear.com/api/${selectedSprite}/${e.target.value}.svg`
+        );
+      }
+      return e.target.value;
+    });
+  };
+
+  const handleSpriteChange = (e) => {
+    setSelectedSprite(() => {
+      if (e.target.value.length > 0) {
+        setImgURL(
+          `https://avatars.dicebear.com/api/${e.target.value}/${inputVal}.svg`
+        );
+      }
+      return e.target.value;
+    });
+  };
+
   return (
     <main className='signup-screen'>
       {/* Create Account Title */}
@@ -11,6 +51,41 @@ function Signup() {
         <h1>Sign-up</h1>
         <h6>Let's be in reach?</h6>
       </div>
+      
+      {/* Avatar */}
+      <div className="avatar-container">
+        <div className="row">
+          <div className="col-20">
+            {imgURL && (
+              <div
+                className="card border-info shadow-lg "
+                style={{ width: "2rem" }}
+              >
+                <img src={imgURL} alt="dicebar" style={{ height: "2rem" }} />
+              </div>
+            )}
+            <div
+              className="card shadow py-1 px-1 d-flex justify-content-center mx-auto mt-2"
+              style={{ width: "70%", float: 'right' }}
+            >  
+              <input
+                className="form-control"
+                value={inputVal}
+                onChange={handleInputChange}
+                placeholder="Type any random letter for random avatar"
+              />
+              <select onChange={handleSpriteChange} className="form-select">
+                {sprites.map((sprite, index) => (
+                  <option value={sprite} key={index}>
+                    {sprite}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Create form */}
       <div className='create-form-container'>
         <Form>
@@ -37,18 +112,7 @@ function Signup() {
           </Form.Group>
 
           {/* Password Section */}
-          <Form.Group className="mb-3 pass-wrapper" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              className='password-input'
-              type= "text"
-              placeholder="Password..." 
-              required
-            />
-          </Form.Group>
-
-          {/* Password Section */}
-          <Form.Group className="mb-3 pass-wrapper" controlId="formBasicPassword">
+          <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Bio</Form.Label>
             <Form.Control
               as='textarea'

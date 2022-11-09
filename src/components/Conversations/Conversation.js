@@ -1,4 +1,5 @@
 import React from 'react'
+// import { useState } from 'react';
 import './Conversation.css'
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -8,9 +9,11 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 
 function Conversation() {
+
     const sendMessage = (e) => {
         e.preventDefault();
     };
+
 
   return (
     <main className='conversation-screen'>
