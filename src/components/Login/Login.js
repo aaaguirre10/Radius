@@ -1,7 +1,7 @@
 // React libraries
 import React from 'react'
 import { useState} from "react";
-
+import { useNavigate, redirect } from 'react-router-dom';
 // Styling
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,24 +9,22 @@ import Form from 'react-bootstrap/Form';
 import './Login.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye} from '@fortawesome/free-solid-svg-icons'
-
-
+import {fetchProfileLogin, submitProfile} from '../../backend/login'
+import { sha256 } from 'js-sha256';
+import Signup from '../Signup/Signup';
 
 
 
 function Login() {
+  const navigate = useNavigate();
   // Constants for login form
   const [passwordShown, setPasswordShown] = useState(false);
   const [validated, setValidated] = useState(false);
 
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
   const eye = <FontAwesomeIcon icon={faEye} />;
-
-
-  const onSubmit = data => {
-    console.log(data);
-  };
-
-
   
   // Password toggle handler
   const togglePassword = () => {
@@ -35,16 +33,26 @@ function Login() {
     setPasswordShown(!passwordShown);
   };
 
-  const handleSubmit = (event) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    
     setValidated(true);
-  };
+    const id = sha256(username+password);
+    const loginResponse = await fetchProfileLogin(id);
 
+    if (loginResponse === 'NOT_FOUND') {
+      //redirect to profile creation
+      alert('Profile not found, redirect to create profile');
+      sessionStorage.setItem('id', id);
+      sessionStorage.setItem('username', username);
+      navigate('/signup');
+      
+    } else {
+      //redirect to home screen and log in
+      alert('Profile found, redirect to home');
+    }
+  };
 
 
   return (
@@ -68,9 +76,10 @@ function Login() {
           {/* Email Section */}
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control
-              className='password-input'
-              type="email" 
-              placeholder="Enter email" 
+              className='username-input'
+              type="text"
+              placeholder="Enter username" 
+              onChange={e => {setUsername(e.target.value)}}
               required
             />
             {/* <Form.Check className='remember-me' type="checkbox" label="Remember Me" /> */}
@@ -82,6 +91,7 @@ function Login() {
               className='password-input'
               type={passwordShown ? "text" : "password"} 
               placeholder="Password" 
+              onChange={e => {setPassword(e.target.value)}}
               required
             />
             <i onClick={togglePassword} className='icon-position'>{eye}</i>
@@ -94,11 +104,11 @@ function Login() {
           </Form.Group>
 
           {/* Login Button */}
-          <Button className='login-btn' type="submit" onClick={onSubmit()}>
+          <Button className="login-btn" type="submit">
             Login
           </Button>
         </Form>
-        <p className='forgot-password' onClick={event => window.location.href='/sign-up'}>Don't have an account? Sign up</p>
+        <p className="forgot-password" onClick={event => window.location.href='/sign-up'}>Don't have an account? Sign up</p>
       </div>
     </main>
   )

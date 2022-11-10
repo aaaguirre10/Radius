@@ -14,3 +14,17 @@
   height: 100vh;
   min-width: 100vw;
 }
+
+/* Login Button */
+.login-btn{
+  background-color: rgb(173, 66, 66);
+  width: 30%;
+  font-size: medium;
+  /* border-radius: 10px; */
+}
+
+.login-btn:hover{
+  background-color: #1C5E76;
+  border: 1px solid #000000;
+  /* border-radius: 50px; */
+}
