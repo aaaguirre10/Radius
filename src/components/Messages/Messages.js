@@ -41,8 +41,16 @@ function Messages() {
         <Chat/>
         <Chat/>
         <Chat/>
+        <Chat/>
+        <Chat/>
+        <Chat/>
+        <Chat/>
+        <Chat/>
+        <Chat/>
+        <Chat/>
+        <Chat/>
+        <Chat/>
       </div>
-
     </main>
   )
 }
