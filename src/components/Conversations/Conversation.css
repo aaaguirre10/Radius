@@ -12,11 +12,45 @@
     /* border-bottom: 1px solid lightgray;
     background-color: red; */
     margin-left: 5%;
-
 }
 
 .conversation-icon{
     transform: scale(1.8);
+}
+
+.conversation-messages{
+    flex: 1;
+
+}
+
+.conversation-input{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-top: 1px solid lightgray;
+    /* background-color: #f5f5f5; */
+}
+
+.conversation-input > form{
+    flex: 1;
+}
+
+.conversation-input > form > input{
+    width: 90%;
+    outline-width: 0;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+.conversation-input > form > button{
+    display: none;
+}
+
+.conversation-camera{
+    color: white;
+    align-items: center;
+    display: flex;
+    height: 50px;
 }
 
 

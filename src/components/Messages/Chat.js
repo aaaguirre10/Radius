@@ -1,4 +1,4 @@
- import React from 'react'
+import React from 'react'
 import './Chat.css'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
