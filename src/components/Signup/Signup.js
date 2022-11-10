@@ -2,6 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Signup.css'
+import {fetchProfileLogin, submitProfile} from '../../backend/login'
 
 const sprites = [
   "male",
@@ -43,6 +44,15 @@ function Signup() {
       return e.target.value;
     });
   };
+
+  const handleSubmit = async (event) => {
+    //Submit profile
+    event.preventDefault();
+    event.stopPropagation();
+    const id = sessionStorage.getItem('id');
+    await submitProfile(id, 'some_signature', {'message':id}, {}, {});
+    
+  }
 
   return (
     <main className='signup-screen'>
@@ -88,7 +98,7 @@ function Signup() {
 
       {/* Create form */}
       <div className='create-form-container'>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           {/* First Name Section */}
           <Form.Group className="mb-3" controlId="formBasicFirstName">
             <Form.Label>First Name</Form.Label>
@@ -125,7 +135,7 @@ function Signup() {
           </Form.Group>
 
           {/* Login Button */}
-          <Button className='signup-btn' type="submit">
+          <Button className='signup-btn' type="submit" >
             Sign up
           </Button>
         </Form>
