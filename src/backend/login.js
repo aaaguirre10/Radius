@@ -1,8 +1,4 @@
-import { sha256 } from 'js-sha256';
-
-export async function fetchProfileLogin(username, password) {
-
-    const id = sha256(username+password);
+export async function fetchProfileLogin(id) {
 
     //look for profile
     const profileSearchResponse = await fetch('http://localhost:8080/get_block/profiles/'+id, {
@@ -18,11 +14,9 @@ export async function fetchProfileLogin(username, password) {
             alert('Error creating logging in please try again');
         }
     });
-    
-    console.log(profileSearchResponse);
-    await submitProfile(id); //TODO: Remove when sign up implemented (sign up will be responsible for creating block)
+    //await submitProfile(id); //TODO: Remove when sign up implemented (sign up will be responsible for creating block)
     return profileSearchResponse['id'];
-   return id;
+
 }
 
 export async function submitProfile(id) {

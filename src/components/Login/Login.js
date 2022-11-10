@@ -1,7 +1,7 @@
 // React libraries
 import React from 'react'
 import { useState} from "react";
-
+import { useNavigate, redirect } from 'react-router-dom';
 // Styling
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -10,12 +10,13 @@ import './Login.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye} from '@fortawesome/free-solid-svg-icons'
 import {fetchProfileLogin, submitProfile} from '../../backend/login'
-
-
+import { sha256 } from 'js-sha256';
+import Signup from '../Signup/Signup';
 
 
 
 function Login() {
+  const navigate = useNavigate();
   // Constants for login form
   const [passwordShown, setPasswordShown] = useState(false);
   const [validated, setValidated] = useState(false);
@@ -37,18 +38,21 @@ function Login() {
     event.stopPropagation();
     
     setValidated(true);
-
-    const loginResponse = await fetchProfileLogin(username, password);
+    const id = sha256(username+password);
+    const loginResponse = await fetchProfileLogin(id);
 
     if (loginResponse === 'NOT_FOUND') {
       //redirect to profile creation
       alert('Profile not found, redirect to create profile');
+      sessionStorage.setItem('id', id);
+      sessionStorage.setItem('username', username);
+      navigate('/signup');
+      
     } else {
       //redirect to home screen and log in
       alert('Profile found, redirect to home');
     }
   };
-
 
 
   return (
