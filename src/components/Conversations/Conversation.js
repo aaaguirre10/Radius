@@ -4,8 +4,9 @@ import './Conversation.css'
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
-
+import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
+import IndividualMessage from './IndividualMessage';
+// import Chat from '../Messages/Chat';
 
 
 function Conversation() {
@@ -28,6 +29,9 @@ function Conversation() {
             <strong>Antonio Aguirre</strong>
         </div>
         {/* chat messages */}
+        <div className='conversation-messages'>
+            <IndividualMessage/>
+        </div>
 
         {/* chat input */}
         <div className='conversation-input'>
@@ -35,10 +39,12 @@ function Conversation() {
                 <input placeholder='Are we in reach?' type='text'/>
                 <button onClick={sendMessage}>Send Message</button>
             </form>
+            <IconButton>
+                <PhotoCameraIcon className='conversation-camera'/>
+            </IconButton>
         </div>
 
     </main>
   )
 }
-
 export default Conversation
