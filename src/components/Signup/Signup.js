@@ -19,7 +19,7 @@ const sprites = [
 
 function Signup() {
 
-  const [imgURL, setImgURL] = React.useState("");
+  const [imgURL, setImgURL] = React.useState("https://avatars.dicebear.com/api/bottts/d.svg");
   const [inputVal, setInputVal] = React.useState("");
   const [selectedSprite, setSelectedSprite] = React.useState(sprites[0]);
 
@@ -69,9 +69,9 @@ function Signup() {
             {imgURL && (
               <div
                 className="card border-info shadow-lg "
-                style={{ width: "2rem" }}
+                style={{ width: "10rem" }}
               >
-                <img src={imgURL} alt="dicebar" style={{ height: "2rem" }} />
+                <img src={imgURL} alt="dicebar" style={{ height: "10rem" }} />
               </div>
             )}
             <div
