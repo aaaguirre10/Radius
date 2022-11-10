@@ -9,9 +9,8 @@ import Form from 'react-bootstrap/Form';
 import './Login.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye} from '@fortawesome/free-solid-svg-icons'
-import {fetchProfileLogin, submitProfile} from '../../backend/login'
+import {fetchProfileLogin} from '../../backend/login'
 import { sha256 } from 'js-sha256';
-import Signup from '../Signup/Signup';
 
 
 
@@ -47,10 +46,11 @@ function Login() {
       sessionStorage.setItem('id', id);
       sessionStorage.setItem('username', username);
       navigate('/signup');
-      
+
     } else {
       //redirect to home screen and log in
       alert('Profile found, redirect to home');
+      
     }
   };
 

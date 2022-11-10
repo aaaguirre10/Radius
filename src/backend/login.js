@@ -19,7 +19,7 @@ export async function fetchProfileLogin(id) {
 
 }
 
-export async function submitProfile(id) {
+export async function submitProfile(id, signature, public_data, protected_data, private_data) {
     await fetch('http://localhost:8080/add_block/profiles', {
       method: 'POST',
       headers : {
@@ -28,10 +28,10 @@ export async function submitProfile(id) {
       },
       body : JSON.stringify( {
         'id': id,//TODO: Combination of sha256(username+password),
-        'signature': 'TODO', //TODO: rsa.sign(id+'It is me', private_key)
-        'public': {},
-        'protected': {},
-        'private': {}
+        'signature': signature, //TODO: rsa.sign(id+'It is me', private_key)
+        'public': public_data,
+        'protected': protected_data,
+        'private': private_data
       })
     }).then(function (response) {
       if(response.ok) {
