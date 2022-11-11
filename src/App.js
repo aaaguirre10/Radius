@@ -4,6 +4,7 @@ import Home from './components/Home/Home'
 import Login from './components/Login/Login'
 import Nearby from './components/Nearby/Nearby'
 import Settings from './components/Settings/Settings'
+import Testing from './components/Testing/Testing'
 import "./styles.css"
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route exact path="/login" element={<Login/>}></Route>
         <Route exact path="/nearby" element={<Nearby/>}></Route>
         <Route exact path="/settings" element={<Settings/>}></Route>
+        <Route exact path="/testing" element={<Testing/>}></Route>
       </Routes>
     </Router>
   )

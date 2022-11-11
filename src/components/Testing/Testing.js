@@ -1,18 +1,13 @@
 import React, { Component } from "react";
-import './Nearby.css'
-import message from "../images/messages.png"
-import friends from "../images/friends.png"
+import "./Testing.css";
 import profile from "../images/profile.png"
-import check from "../images/check.png"
-import exe from "../images/exe.png"
-import frie from "../images/frie.png"
-import Dropdown from 'react-bootstrap/Dropdown';
+import settings from "../images/settings.png"
+import messages from "../images/messages.png"
 
-
-class Nearby extends Component {
+class UserCards extends Component {
   state = {
     data: [],
-    per: 3,
+    per: 1,
     page: 1,
     total_pages: null
   };
@@ -52,30 +47,14 @@ class Nearby extends Component {
   render() {
     return (
       <div className='nearby-screen'>
-        <div className='nearby-header'>
+      <div className='nearby-header'>
         <h1 className= 'radius-title' color='white'>RADIUS</h1>
         <br></br>
         <h2 className= 'nearby-title' color='white'>Nearby</h2>
+        <button className='profile-icon'> <img src={profile} alt='profile'/></button>
+        <button className='settings-icon'> <img src={settings} alt='settings'/></button>
       </div>
-
-      <div className="row">
-      <Dropdown>
-      <Dropdown.Toggle  className="success" id="dropdown-basic">
-      <div className='dropdown'> <img src={frie} alt='frie'/></div> 
-      
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-      
-        <Dropdown.Item >Friend Request</Dropdown.Item>
-        <div className='succ' ></div> 
-        <div className='succ' >pussyDestroyer</div> 
-        <button className='checkmark'> <img src={check} alt='check'/></button> 
-        <button className='exe'> <img src={exe} alt='exe'/></button> 
-       
-
-      </Dropdown.Menu>
-    </Dropdown>
+      <div className= 'nearby-middle'>
       {this.state.data.map(data => (
             <div className="col-md-4 animated fadeIn" key={data.id.value}>
               <div className="card">
@@ -105,18 +84,13 @@ class Nearby extends Component {
             </div>
           ))}
       </div>
-
-
       <div className= 'nearby-bottom'>
-        <button className='message-icon'> <img src={message} alt='message'/></button>
-        <button className='friends-icon'> <img style={{ width: 40, height: 40 }} src={friends} alt='friends'/></button>        
-        <button className='profile-icon'> <img src={profile} alt='profile'/></button>
+        <button className='messages-icon-nearby'> <img src={messages} alt='messages'/></button>
       </div>   
       
     </div>
-    
-  )
-}
+    );
+  }
 }
 
-export default Nearby
+export default UserCards;

@@ -1,3 +1,73 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .col-md-4 {
+    margin-bottom: 30px;
+  }
+  
+  .card {
+    background-color: rgb(255, 255, 255, 0.6);
+    padding: 30px;
+    border: solid 1px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+  }
+  
+  .card-title {
+    margin-top: 20px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: rgba(0, 0, 0);
+  }
+  .card-text .fa {
+    font-size: 26px;
+  }
+  .avatar {
+    width: 140px;
+    margin: auto;
+  }
+  .avatar img {
+    border: solid 6px transparent;
+    border-radius: 50%;
+  }
+  
+  .btn {
+    border-radius: 25px;
+    position: absolute;
+    left: 40%;
+    bottom: 10%;
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1040px;
+    }
+  }
+/*----------------------------------------------------------------*/
+  .friend{
+    border-radius: 25%;
+    background-color: rgba(11, 63, 84, 0.245);
+    color: white;
+    padding: 12px 20px;
+    border: 2px solid black;
+    border-radius: 50px;
+    border-color: black;
+
+  }
+
+  .friend:hover{
+    background-color: rgba(11, 63, 84, 0.468);
+
+  }
+
+.nearby-screen{
+    background: rgb(44,82,99);
+    background: linear-gradient(0deg, rgba(44,82,99,1) 21%, rgba(18,37,44,1) 86%);
+    background-repeat:no-repeat;
+}
+
 .radius-title{
     text-align: center;
     color: white;
@@ -7,13 +77,34 @@
     text-align: center;
     color: white;
 }
-.bottom-border{
+
+.nearby-bottom{
     background-color:#12242B ;
     width: 100%;
-    height:10%;
-    position: absolute;
-    bottom: 0ch;
+    height: 5%;
+    position: fixed;
+    bottom: 0%;
 
+}
+
+.message-icon{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    bottom: 0%;
+    left: 3%;
+    
+}
+
+.friends-icon{
+
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    bottom: 0%;
+    left: 48%;
+    
 }
 
 .profile-icon{
@@ -21,39 +112,63 @@
     background-color: transparent;
     border: none;
     position: absolute;
-    top: 3.5ch;
-    left: 3.5ch;
+    bottom: 0%;
+    right: 3%;
     
 }
 
-.profile-icon:hover{
-
-    transform: scale(1.25);
-    
+.row{
+    width: 95%;
+    height: 90%;
 }
 
-.settings-icon{
+/*---------------------------------------------andy*/
 
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    top: 3.5ch;
-    right: 3.5ch;
-    
+.success{
+  background-color: #1C5E76;
 }
-
-.settings-icon:hover{
-
-    transform: scale(1.25);
-    
+.dropdown-menu.show{
+  height: 400%;
+  width: 20%;
+  position: absolute;
+  background-color: #248bbbb6;
+  
 }
+.succ{
+  background-color: #424242;
+  position: absolute;
+  height: 2%;
+  width: 100%;
+}
+.succ2{
+ 
+  position: absolute;
+  height: 2%;
+  width: 50%;
+  bottom: 60%;
+  background-color: #000000;
+  
+}
+.checkmark{
+  background-color: transparent;
+  border: none;
+      position: absolute;
+  
+      right: 16%;
 
-.messages-icon{
+  
+}
+.exe{
+background-color: transparent;
+border: none;
+  position: absolute;
 
-    background-color: transparent;
-    border: none;
-    position: absolute;
-    bottom: 2ch;
-    left: 3.5ch;
-    
+  right: 5%;
+}
+.dropdown{
+  color: #ffffff;
+  
+}
+.dropdown-item{
+  color: #000000;
 }
