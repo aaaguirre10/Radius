@@ -3,16 +3,11 @@ import './Nearby.css'
 import message from "../images/messages.png"
 import friends from "../images/friends.png"
 import profile from "../images/profile.png"
-import check from "../images/check.png"
-import exe from "../images/exe.png"
-import frie from "../images/frie.png"
-import Dropdown from 'react-bootstrap/Dropdown';
-
 
 class Nearby extends Component {
   state = {
     data: [],
-    per: 3,
+    per: 4,
     page: 1,
     total_pages: null
   };
@@ -59,23 +54,6 @@ class Nearby extends Component {
       </div>
 
       <div className="row">
-      <Dropdown>
-      <Dropdown.Toggle  className="success" id="dropdown-basic">
-      <div className='dropdown'> <img src={frie} alt='frie'/></div> 
-      
-      </Dropdown.Toggle>
-
-      <Dropdown.Menu>
-      
-        <Dropdown.Item >Friend Request</Dropdown.Item>
-        <div className='succ' ></div> 
-        <div className='succ' >pussyDestroyer</div> 
-        <button className='checkmark'> <img src={check} alt='check'/></button> 
-        <button className='exe'> <img src={exe} alt='exe'/></button> 
-       
-
-      </Dropdown.Menu>
-    </Dropdown>
       {this.state.data.map(data => (
             <div className="col-md-4 animated fadeIn" key={data.id.value}>
               <div className="card">

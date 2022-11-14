@@ -120,55 +120,14 @@
 .row{
     width: 95%;
     height: 90%;
+    padding-left: 1%;
+    padding-bottom: 1%;
 }
 
-/*---------------------------------------------andy*/
+.card-text{
+  text-align: center;
+}
 
-.success{
-  background-color: #1C5E76;
-}
-.dropdown-menu.show{
-  height: 400%;
-  width: 20%;
-  position: absolute;
-  background-color: #248bbbb6;
-  
-}
-.succ{
-  background-color: #424242;
-  position: absolute;
-  height: 2%;
-  width: 100%;
-}
-.succ2{
- 
-  position: absolute;
-  height: 2%;
-  width: 50%;
-  bottom: 60%;
-  background-color: #000000;
-  
-}
-.checkmark{
-  background-color: transparent;
-  border: none;
-      position: absolute;
-  
-      right: 16%;
-
-  
-}
-.exe{
-background-color: transparent;
-border: none;
-  position: absolute;
-
-  right: 5%;
-}
-.dropdown{
-  color: #ffffff;
-  
-}
-.dropdown-item{
-  color: #000000;
+.card-title{
+  text-align: center;
 }
