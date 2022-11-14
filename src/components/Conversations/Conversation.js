@@ -20,7 +20,10 @@ function Conversation() {
     <main className='conversation-screen'>
         <div className='backarrow-position'>
             <IconButton>
-                <ArrowBackIosNewIcon className='messages-header'/>
+                <ArrowBackIosNewIcon 
+                    className='messages-header'
+                    onClick={event => window.location.href='/messages'}
+                />
             </IconButton>
       </div>
         {/* chat header */}

@@ -6,13 +6,9 @@ import './Signup.css'
 const sprites = [
   "male",
   "female",
-  "human",
-  "identicon",
   "initials",
   "bottts",
   "avataaars",
-  "jdenticon",
-  "gridy",
   "micah"
 ];
 
@@ -55,24 +51,24 @@ function Signup() {
       {/* Avatar */}
       <div className="avatar-container">
         <div className="row">
-          <div className="col-20">
+          <div className="col-12">
             {imgURL && (
               <div
-                className="card border-info shadow-lg "
-                style={{ width: "2rem" }}
+                className="card border-info shadow-lg mx-auto my-1 rounded-circle"
+                style={{ width: "50%" }}
               >
-                <img src={imgURL} alt="dicebar" style={{ height: "2rem" }} />
+                <img src={imgURL} alt="dicebar" style={{ height: "100px" }} className='rounded-circle'/>
               </div>
             )}
             <div
-              className="card shadow py-1 px-1 d-flex justify-content-center mx-auto mt-2"
-              style={{ width: "70%", float: 'right' }}
+              className="card py-1 px-1 d-flex justify-content-center mx-auto mt-6 "
+              style={{ width: "100%", float: 'left', backgroundColor: '#1C5E76' }}
             >  
               <input
                 className="form-control"
                 value={inputVal}
                 onChange={handleInputChange}
-                placeholder="Type any random letter for random avatar"
+                placeholder="Avatar generator"
               />
               <select onChange={handleSpriteChange} className="form-select">
                 {sprites.map((sprite, index) => (
@@ -90,7 +86,7 @@ function Signup() {
       <div className='create-form-container'>
         <Form>
           {/* First Name Section */}
-          <Form.Group className="mb-3" controlId="formBasicFirstName">
+          <Form.Group className="mb-1" controlId="formBasicFirstName">
             <Form.Label>First Name</Form.Label>
             <Form.Control
               className='name-input'
@@ -101,7 +97,7 @@ function Signup() {
           </Form.Group>
 
           {/* Last Name Section */}
-          <Form.Group className="mb-3" controlId="formBasicLastName">
+          <Form.Group className="mb-1" controlId="formBasicLastName">
             <Form.Label>Last Name</Form.Label>
             <Form.Control
               className='name-input'
@@ -112,7 +108,7 @@ function Signup() {
           </Form.Group>
 
           {/* Password Section */}
-          <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Group className="mb-1" controlId="formBasicPassword">
             <Form.Label>Bio</Form.Label>
             <Form.Control
               as='textarea'
