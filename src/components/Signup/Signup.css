@@ -122,3 +122,10 @@
     flex-direction: row;
     /* width: 100; */
 }
+
+.form-select{
+    background-color: rgb(66, 145, 173);
+    border: 1px solid #000000;
+    font-size: medium;
+    color: white;
+}
