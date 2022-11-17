@@ -1,8 +1,4 @@
-.App {
-    font-family: sans-serif;
-    text-align: center;
-  }
-  
+/*   
   .col-md-4 {
     margin-bottom: 30px;
   }
@@ -44,9 +40,9 @@
     .container {
       max-width: 1040px;
     }
-  }
+  } */
 /*----------------------------------------------------------------*/
-  .friend{
+/* .friend{
     border-radius: 25%;
     background-color: rgba(11, 63, 84, 0.245);
     color: white;
@@ -54,13 +50,12 @@
     border: 2px solid black;
     border-radius: 50px;
     border-color: black;
+}
 
-  }
-
-  .friend:hover{
+.friend:hover{
     background-color: rgba(11, 63, 84, 0.468);
 
-  }
+}
 
 .nearby-screen{
     background: rgb(44,82,99);
@@ -130,4 +125,4 @@
 
 .card-title{
   text-align: center;
-}
+} */
