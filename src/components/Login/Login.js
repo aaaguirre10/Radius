@@ -108,7 +108,7 @@ function Login() {
             Login
           </Button>
         </Form>
-        <p className="forgot-password" onClick={event => window.location.href='/sign-up'}>Don't have an account? Sign up</p>
+        <p className="forgot-password" onClick={event => window.location.href='/signup'}>Don't have an account? Sign up</p>
       </div>
     </main>
   )

@@ -16,14 +16,14 @@
 }
 
 /* Login Button */
-.login-btn{
-  background-color: rgb(173, 66, 66);
-  width: 30%;
+.start-btn{
+  background-color: rgb(66, 145, 173);
+  width: 50%;
   font-size: medium;
   /* border-radius: 10px; */
 }
 
-.login-btn:hover{
+.start-btn:hover{
   background-color: #1C5E76;
   border: 1px solid #000000;
   /* border-radius: 50px; */
