@@ -54,7 +54,6 @@ function Signup() {
     const id = sessionStorage.getItem('id');
     //Refactoring opportunity,
     //extract methods to generate public/protected/private requests
-    
     const submitted = await submitProfile(
       id,
       'signature_placeholder',
