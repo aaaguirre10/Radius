@@ -50,6 +50,9 @@ function Login() {
     } else {
       //redirect to home screen and log in
       alert('Profile found, redirect to home');
+      sessionStorage.setItem('id', id);
+      sessionStorage.setItem('username', username);
+      navigate("/nearby");
       
     }
   };

@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Signup.css'
 import {fetchProfileLogin, submitProfile} from '../../backend/login'
+import { useNavigate, redirect } from 'react-router-dom';
 
 const sprites = [
   "male",
@@ -14,6 +15,7 @@ const sprites = [
 ];
 
 function Signup() {
+  const navigate = useNavigate();
 
   const [imgURL, setImgURL] = React.useState("");
   const [inputVal, setInputVal] = React.useState("");
@@ -46,7 +48,8 @@ function Signup() {
     event.preventDefault();
     event.stopPropagation();
     const id = sessionStorage.getItem('id');
-    await submitProfile(id, 'some_signature', {'message':id}, {}, {});
+    await submitProfile(id,'some_signature',{'message':id},{'message':id/*temp*/}, {'message':id/*temp*/});
+    navigate('/nearby');
     
   }
 
