@@ -39,18 +39,18 @@ function Login() {
     setValidated(true);
     const id = sha256(username+password);
     const loginResponse = await fetchProfileLogin(id);
-
     if (loginResponse === 'NOT_FOUND') {
-      //redirect to profile creation
-      alert('Profile not found, redirect to create profile');
-      sessionStorage.setItem('id', id);
+      //TODO: Refactor opportunity; extract outside of if/else block
+      sessionStorage.setItem('id', id); 
       sessionStorage.setItem('username', username);
+      //redirect to profile creation
       navigate('/signup');
-
     } else {
+      //TODO: Refactor opportunity
+      sessionStorage.setItem('id', id); 
+      sessionStorage.setItem('username', username);
       //redirect to home screen and log in
-      alert('Profile found, redirect to home');
-      
+      navigate("/nearby");
     }
   };
 

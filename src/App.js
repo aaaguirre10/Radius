@@ -22,7 +22,6 @@ function App() {
         <Route exact path="/nearby" element={<Nearby/>}></Route>
         {/* <Route exact path="/settings" element={<Settings/>}></Route> */}
         <Route exact path="/conversation" element={<Conversation/>}></Route>
-
       </Routes>
     </Router>
   )

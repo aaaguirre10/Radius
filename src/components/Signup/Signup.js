@@ -1,8 +1,10 @@
 import React from 'react'
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './Signup.css'
 import {fetchProfileLogin, submitProfile} from '../../backend/login'
+import { useNavigate, redirect } from 'react-router-dom';
 
 const sprites = [
   "male",
@@ -14,10 +16,14 @@ const sprites = [
 ];
 
 function Signup() {
+  const navigate = useNavigate();
 
-  const [imgURL, setImgURL] = React.useState("");
+  const [imgURL, setImgURL] = React.useState("https://avatars.dicebear.com/api/bottts/d.svg");
   const [inputVal, setInputVal] = React.useState("");
   const [selectedSprite, setSelectedSprite] = React.useState(sprites[0]);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [bio, setBio] = useState('');
 
   const handleInputChange = (e) => {
     setInputVal(() => {
@@ -46,8 +52,24 @@ function Signup() {
     event.preventDefault();
     event.stopPropagation();
     const id = sessionStorage.getItem('id');
-    await submitProfile(id, 'some_signature', {'message':id}, {}, {});
-    
+    //Refactoring opportunity,
+    //extract methods to generate public/protected/private requests
+    const submitted = await submitProfile(
+      id,
+      'signature_placeholder',
+      {
+        'firstName': firstName,
+        'lastName': lastName,
+        'bio': bio
+      },
+      {'message':id/*temp*/},
+      {'message':id/*temp*/});
+
+    if (submitted) {
+      navigate('/nearby');
+    } else {
+      alert('Error creating logging in please try again');
+    }
   }
 
   return (
@@ -64,10 +86,10 @@ function Signup() {
           <div className="col-12">
             {imgURL && (
               <div
-                className="card border-info shadow-lg mx-auto my-1 rounded-circle"
-                style={{ width: "50%" }}
+                className="card border-info shadow-lg "
+                style={{ width: "10rem" }}
               >
-                <img src={imgURL} alt="dicebar" style={{ height: "100px" }} className='rounded-circle'/>
+                <img src={imgURL} alt="dicebar" style={{ height: "10rem" }} />
               </div>
             )}
             <div
@@ -95,6 +117,19 @@ function Signup() {
       {/* Create form */}
       <div className='create-form-container'>
         <Form onSubmit={handleSubmit}>
+          {/* Username */}
+          <Form.Group className="mb-1" controlId="formBasicFirstName">
+            <Form.Label>User Name</Form.Label>
+            <Form.Control
+              className='username-input'
+              type="text" 
+              placeholder="Username" 
+              value={sessionStorage.getItem('username')}
+              disabled
+            />
+          </Form.Group>
+
+          
           {/* First Name Section */}
           <Form.Group className="mb-1" controlId="formBasicFirstName">
             <Form.Label>First Name</Form.Label>
@@ -102,6 +137,7 @@ function Signup() {
               className='name-input'
               type="text" 
               placeholder="First Name..." 
+              onChange={e => {setFirstName(e.target.value)}}
               required
             />
           </Form.Group>
@@ -113,6 +149,7 @@ function Signup() {
               className='name-input'
               type="text" 
               placeholder="Last Name..." 
+              onChange={e => {setLastName(e.target.value)}}
               required
             />
           </Form.Group>
@@ -126,6 +163,7 @@ function Signup() {
               className='password-input'
               type= "text"
               placeholder="Bio..." 
+              onChange={e => {setBio(e.target.value)}}
               required
             />
           </Form.Group>
