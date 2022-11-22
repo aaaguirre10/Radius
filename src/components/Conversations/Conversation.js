@@ -7,24 +7,51 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import IndividualMessage from './IndividualMessage';
 // import Chat from '../Messages/Chat';
+import { getMessage, sendMessages } from '../../backend/sendMessage';
+import { useState} from "react";
 
 
 function Conversation() {
 
-    const sendMessage = (e) => {
+    const [messages, setMessages] = useState([]);
+    const sendMessage = async(e) => { //@TODO refactor function name
         e.preventDefault();
+        e.stopPropagation();
+        console.log(document.getElementById('message').value);
+        let messageValue = document.getElementById('message').value;
+
+        let id = messageValue; //make SHA
+        const submitted = await sendMessages( // @TODO refactor
+            id,
+            'signature_placeholder',
+            {
+              'hello':'there',
+            },
+            {'message':id/*temp*/},
+            {'MessageSent': messageValue});
+        if (submitted) {
+            alert("message sent");
+            } 
+        else {
+            alert('Error creating logging in please try again');
+        }
+
+        setMessages([...messages, messageValue]);
+
+
+
     };
 
 
   return (
     <main className='conversation-screen'>
         <div className='backarrow-position'>
-            <IconButton>
+            {/* <IconButton>
                 <ArrowBackIosNewIcon 
                     className='messages-header'
                     onClick={event => window.location.href='/messages'}
                 />
-            </IconButton>
+            </IconButton> */}
       </div>
         {/* chat header */}
         <div className='conversation-header'>
@@ -38,10 +65,11 @@ function Conversation() {
 
         {/* chat input */}
         <div className='conversation-input'>
-            <form>
-                <input placeholder='Are we in reach?' type='text'/>
-                <button onClick={sendMessage}>Send Message</button>
+            <form onSubmit={sendMessage}>
+                <input id='message' placeholder='Are we in reach?' type='text'/>
+                <button>Send Message</button>
             </form>
+            
             <IconButton>
                 <PhotoCameraIcon className='conversation-camera'/>
             </IconButton>

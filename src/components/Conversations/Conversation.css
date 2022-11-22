@@ -43,7 +43,7 @@
 }
 
 .conversation-input > form > button{
-    display: none;
+    display: block;
 }
 
 .conversation-camera{
