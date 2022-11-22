@@ -36,23 +36,21 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     event.stopPropagation();
-    alert('handling submit');
+
     setValidated(true);
     const id = sha256(username+password);
     const loginResponse = await fetchProfileLogin(id);
-    alert('fetched profile');
+
     if (loginResponse === 'NOT_FOUND') {
       //TODO: Refactor opportunity; extract outside of if/else block
       sessionStorage.setItem('id', id); 
       sessionStorage.setItem('username', username);
-      alert('tosignup');
       //redirect to profile creation
       navigate('/signup');
     } else {
       //TODO: Refactor opportunity
       sessionStorage.setItem('id', id); 
       sessionStorage.setItem('username', username);
-      alert(loginResponse);
       //redirect to home screen and log in
       navigate("/nearby");
     }
