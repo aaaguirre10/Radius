@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye} from '@fortawesome/free-solid-svg-icons'
 import {fetchProfileLogin} from '../../backend/login'
 import { sha256 } from 'js-sha256';
+import { AlternateEmail } from '@mui/icons-material';
 
 
 
@@ -20,8 +21,8 @@ function Login() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [validated, setValidated] = useState(false);
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const eye = <FontAwesomeIcon icon={faEye} />;
   
@@ -35,20 +36,23 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     event.stopPropagation();
-    
+    alert('handling submit');
     setValidated(true);
     const id = sha256(username+password);
     const loginResponse = await fetchProfileLogin(id);
+    alert('fetched profile');
     if (loginResponse === 'NOT_FOUND') {
       //TODO: Refactor opportunity; extract outside of if/else block
       sessionStorage.setItem('id', id); 
       sessionStorage.setItem('username', username);
+      alert('tosignup');
       //redirect to profile creation
       navigate('/signup');
     } else {
       //TODO: Refactor opportunity
       sessionStorage.setItem('id', id); 
       sessionStorage.setItem('username', username);
+      alert(loginResponse);
       //redirect to home screen and log in
       navigate("/nearby");
     }
