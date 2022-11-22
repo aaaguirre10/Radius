@@ -1,4 +1,4 @@
-/*   
+  
   .col-md-4 {
     margin-bottom: 30px;
   }
@@ -29,20 +29,19 @@
     border-radius: 50%;
   }
   
-  .btn {
+  /* .btn {
     border-radius: 25px;
     position: absolute;
     left: 40%;
     bottom: 10%;
-  }
+  } */
   
   @media (min-width: 1200px) {
     .container {
       max-width: 1040px;
     }
-  } */
-/*----------------------------------------------------------------*/
-/* .friend{
+  }
+.friend{
     border-radius: 25%;
     background-color: rgba(11, 63, 84, 0.245);
     color: white;
@@ -63,12 +62,12 @@
     background-repeat:no-repeat;
 }
 
-.radius-title{
+.radius-title-screen{
     text-align: center;
     color: white;
 }
 
-.nearby-title{
+.nearby-title-screen{
     text-align: center;
     color: white;
 }
@@ -125,4 +124,4 @@
 
 .card-title{
   text-align: center;
-} */
+}

@@ -104,7 +104,7 @@ function Login() {
           </Form.Group>
 
           {/* Login Button */}
-          <Button className="login-btn" type="submit">
+          <Button onClick={event => window.location.href='/nearby'} className="login-btn" type="submit">
             Login
           </Button>
         </Form>

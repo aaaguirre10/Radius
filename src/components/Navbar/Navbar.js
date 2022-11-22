@@ -10,12 +10,12 @@ function Navbar() {
     <main>
         <div>
           <nav class="nav">
-            <a href="/" class="nav__link">
+            <a href="/messages" class="nav__link">
                 <IconButton>
                     <MessageIcon className='icon-color'/>
                 </IconButton>
             </a>
-            <a href="/" class="nav__link">
+            <a href="/nearby" class="nav__link">
                 <IconButton>
                     <HomeIcon className='icon-color'/>
                 </IconButton>

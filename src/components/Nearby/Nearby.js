@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import './Nearby.css'
-import message from "../images/messages.png"
-import friends from "../images/friends.png"
-import profile from "../images/profile.png"
+import Navbar from '../Navbar/Navbar'
 
 class Nearby extends Component {
   state = {
@@ -47,10 +45,10 @@ class Nearby extends Component {
   render() {
     return (
       <div className='nearby-screen'>
-        <div className='nearby-header'>
-        <h1 className= 'radius-title' color='white'>RADIUS</h1>
-        <br></br>
-        <h2 className= 'nearby-title' color='white'>Nearby</h2>
+        <div className='nearby-header-screen'>
+            <h1 className='radius-title-screen' color='white'>RADIUS</h1>
+            <br></br>
+            <h2 className= 'nearby-title-screen' color='white'>Nearby</h2>
       </div>
 
       <div className="row">
@@ -83,16 +81,10 @@ class Nearby extends Component {
             </div>
           ))}
       </div>
-
-
-      <div className= 'nearby-bottom'>
-        <button className='message-icon'> <img src={message} alt='message'/></button>
-        <button className='friends-icon'> <img style={{ width: 40, height: 40 }} src={friends} alt='friends'/></button>        
-        <button className='profile-icon'> <img src={profile} alt='profile'/></button>
+      <div>
+        <Navbar/>
       </div>   
-      
     </div>
-    
   )
 }
 }
