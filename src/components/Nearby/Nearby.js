@@ -7,7 +7,7 @@ import profile from "../images/profile.png"
 class Nearby extends Component {
   state = {
     data: [],
-    per: 4,
+    per: 5,
     page: 1,
     total_pages: null
   };
@@ -28,16 +28,6 @@ class Nearby extends Component {
           total_pages: json.info.results
         });
       });
-  };
-
-  loadMore = () => {
-    this.setState(
-      prevState => ({
-        page: prevState.page + 1,
-        scrolling: true
-      }),
-      this.loadData
-    );
   };
 
   componentDidMount() {
@@ -70,13 +60,6 @@ class Nearby extends Component {
                       " " +
                       this.uppercase(data.name.last)}
                   </h5>
-                  <p className="card-text">
-                    {data.location.city +
-                      ", " +
-                      this.uppercase(data.location.state)}
-                    <br />
-                    <span className="phone">{data.phone}</span>
-                  </p>
                 </div>
                 <button className= "friend">Add Friend</button>
               </div>
