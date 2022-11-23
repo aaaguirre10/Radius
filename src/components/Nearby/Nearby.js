@@ -53,7 +53,7 @@ class Nearby extends Component {
     if(response === true) {
       alert('friend request sent');
     } else {
-      alert('error sending friend request');
+      alert('error sending friend request, try again.');
     }
   }
 

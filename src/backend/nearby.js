@@ -48,8 +48,6 @@ export async function fetchNearby() {
 }
 
 export async function sendFriendRequest(id, public_data, protected_data, private_data) {
-    //const id = sha256(from+to);
-
     return await fetch('http://localhost:8080/add_block/interactions', {
       method: 'POST',
       headers : {
@@ -68,10 +66,12 @@ export async function sendFriendRequest(id, public_data, protected_data, private
         response.json().then(function(response) {
           console.log(response);
         });
-        return true
+        return true;
       }
       else {
-        return false
+        return false;
       }
+    }).catch(function(response) {
+        return false;
     });
 }
