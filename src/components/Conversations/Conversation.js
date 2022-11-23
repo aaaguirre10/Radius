@@ -35,7 +35,8 @@ function Conversation() {
         else {
             alert('Error creating logging in please try again');
         }
-
+        let container = document.getElementsByClassName('conversation-messages');
+        container.innerHTML += <IndividualMessage/>;
         setMessages([...messages, messageValue]);
 
 

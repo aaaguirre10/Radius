@@ -46,8 +46,10 @@ function Login() {
       sessionStorage.setItem('id', id); 
       sessionStorage.setItem('username', username);
       //redirect to profile creation
+      alert("Going to signup");
       navigate('/signup');
     } else {
+      alert("going to nerby");
       //TODO: Refactor opportunity
       sessionStorage.setItem('id', id); 
       sessionStorage.setItem('username', username);
@@ -106,7 +108,7 @@ function Login() {
           </Form.Group>
 
           {/* Login Button */}
-          <Button onClick={event => window.location.href='/nearby'} className="login-btn" type="submit">
+          <Button className="login-btn" type="submit">
             Login
           </Button>
         </Form>

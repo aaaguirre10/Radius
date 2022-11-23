@@ -6,7 +6,7 @@ function IndividualMessage() {
   return (
     <div className='individualMessage-container'>
         <AccountCircleIcon className='conversation-icon'/>
-        <p>This is a message</p>
+        <p className='messageBody'></p>
         <small>Timestamp</small>
     </div> 
     
