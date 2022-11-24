@@ -6,6 +6,7 @@ import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
 import Chat from './Chat';
+import Navbar from '../Navbar/Navbar';
 
 
 function Messages() {
@@ -50,6 +51,9 @@ function Messages() {
         <Chat/>
         <Chat/>
         <Chat/>
+      </div>
+      <div>
+        <Navbar/>
       </div>
     </main>
   )

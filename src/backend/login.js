@@ -20,7 +20,7 @@ export async function fetchProfileLogin(id) {
 }
 
 export async function submitProfile(id, signature, public_data, protected_data, private_data) {
-    await fetch('http://localhost:8080/add_block/profiles', {
+    return await fetch('http://localhost:8080/add_block/profiles', {
       method: 'POST',
       headers : {
         'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches
@@ -38,9 +38,10 @@ export async function submitProfile(id, signature, public_data, protected_data, 
         response.json().then(function(response) {
           console.log(response);
         });
+        return true
       }
       else {
-        alert('Error creating logging in please try again');
+        return false
       }
     });
 } 

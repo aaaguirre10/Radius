@@ -1,13 +1,14 @@
 import React from 'react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import './IndividualMessage.css'
+import { useState } from 'react';
 
-function IndividualMessage() {
+function IndividualMessage({key, message}) {
   return (
     <div className='individualMessage-container'>
         <AccountCircleIcon className='conversation-icon'/>
-        <p>This is a message</p>
-        <small>Timestamp</small>
+        <p>{message}</p>
+
     </div> 
     
   )

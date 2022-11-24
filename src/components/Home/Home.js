@@ -15,8 +15,8 @@ function Home() {
     <div className='home-brand'>
         <h1>RADIUS</h1>
         <p>Are we in reach?</p>
-        <Button className='login-btn' type="submit" onClick={redirectToLogin}>
-            Login
+        <Button className='start-btn' type="submit" onClick={redirectToLogin}>
+          Welcome
         </Button>
     </div>
   )
