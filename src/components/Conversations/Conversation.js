@@ -22,7 +22,8 @@ function Conversation() {
         e.preventDefault();
         const newMessage = {
             id: messageText,
-            message: messageText
+            message: messageText,
+            senderBoolean: true
         } 
         addMessage(newMessage);
         setMessageText('');
@@ -85,8 +86,8 @@ const wrapper = async(e) =>{
         {/* chat messages */}
         <div className='conversation-messages'>
             <ul>
-                {messageArr.map(({ id, message }) => (
-                    <IndividualMessage key={id} message={message}>
+                {messageArr.map(({ id, message, senderBoolean }) => (
+                    <IndividualMessage key={id} message={message} senderBoolean={senderBoolean}>
                         {/* <li>{message}</li> */}
                         {console.log(message)}
                     </IndividualMessage>

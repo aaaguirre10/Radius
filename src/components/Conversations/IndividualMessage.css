@@ -25,3 +25,30 @@
     right: 0px;
 }
 
+
+.individualMessage-container-sender{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 15px;
+    flex-direction: row-reverse;
+}
+
+.individualMessage-container-sender > p{
+    font-size: medium;
+    padding: 15px;
+    border-radius: 20px;
+    margin: 10px;
+    margin-left: auto;
+    background-color: #6665fc;
+}
+
+.individualMessage-container-sender > small{
+    color: #6665fc;
+    /* position: absolute; */
+    font-size: 8px;
+    bottom: -5px;
+    right: 0px;
+}
+
