@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import './Nearby.css'
 import Navbar from '../Navbar/Navbar'
+import Dropdown from 'react-bootstrap/Dropdown';
+import frie from "../images/frie.png"
+
 
 class Nearby extends Component {
   state = {
     data: [],
-    per: 4,
+    per: 3,
     page: 1,
-    total_pages: null
+    total_pages: null,
+    text: "Add Friend"
   };
 
   uppercase = word => {
@@ -28,27 +32,33 @@ class Nearby extends Component {
       });
   };
 
-  loadMore = () => {
-    this.setState(
-      prevState => ({
-        page: prevState.page + 1,
-        scrolling: true
-      }),
-      this.loadData
-    );
-  };
-
   componentDidMount() {
     this.loadData();
   }
+  
+  changeText = (text) => {
+  
+    this.setState({ text }); 
+  } 
 
   render() {
+    const { text } = this.state
     return (
       <div className='nearby-screen'>
         <div className='nearby-header-screen'>
             <h1 className='radius-title-screen' color='white'>RADIUS</h1>
             <br></br>
             <h2 className= 'nearby-title-screen' color='white'>Nearby</h2>
+      </div>
+
+      <div className="friend-request">
+      <Dropdown>
+        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary"><img src={frie} alt=""/></Dropdown.Toggle>
+
+        <Dropdown.Menu variant="dark">
+          <Dropdown.Item href="#/action-1">Something</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
       </div>
 
       <div className="row">
@@ -68,15 +78,8 @@ class Nearby extends Component {
                       " " +
                       this.uppercase(data.name.last)}
                   </h5>
-                  <p className="card-text">
-                    {data.location.city +
-                      ", " +
-                      this.uppercase(data.location.state)}
-                    <br />
-                    <span className="phone">{data.phone}</span>
-                  </p>
                 </div>
-                <button className= "friend">Add Friend</button>
+                <button className= "friend" onClick={ () => { this.changeText("Sent")}}>{text}</button>
               </div>
             </div>
           ))}
