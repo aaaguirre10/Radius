@@ -1,87 +1,95 @@
-  
-  .col-md-4 {
-    margin-bottom: 30px;
-    padding-left: 5px;
-    padding-right: 10px;
+import React, { Component } from "react";
+import './Nearby.css'
+import Navbar from '../Navbar/Navbar'
+import Dropdown from 'react-bootstrap/Dropdown';
+import frie from "../images/frie.png"
+
+
+class Nearby extends Component {
+  state = {
+    data: [],
+    per: 3,
+    page: 1,
+    total_pages: null,
+    text: "Add Friend"
+  };
+
+  uppercase = word => {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  };
+
+  loadData = () => {
+    const { per, page, data } = this.state;
+    const endpoint = `https://randomuser.me/api/?nat=us&results=${per}&page=${page}`;
+    fetch(endpoint)
+      .then(response => response.json())
+      .then(json => {
+        this.setState({
+          data: [...data, ...json.results],
+          scrolling: false,
+          total_pages: json.info.results
+        });
+      });
+  };
+
+  componentDidMount() {
+    this.loadData();
   }
   
-  .card {
-    background-color: rgb(255, 255, 255, 0.6);
-    padding: 30px;
-    border: solid 1px rgba(0, 0, 0, 0.08);
-  }
+  changeText = (text) => {
   
-  .card-title {
-    margin-top: 20px;
-  }
-  .card-text {
-    font-size: 14px;
-    color: rgba(0, 0, 0);
-  }
-  .card-text .fa {
-    font-size: 26px;
-  }
-  .avatar {
-    width: 140px;
-    margin: auto;
-  }
-  .avatar img {
-    border: solid 6px transparent;
-    border-radius: 50%;
-  }
-  
-  @media (min-width: 1200px) {
-    .container {
-      max-width: 1040px;
-    }
-  }
-.friend{
-    border-radius: 25%;
-    background-color: rgba(11, 63, 84, 0.245);
-    color: white;
-    padding: 12px 20px;
-    border: 2px solid black;
-    border-radius: 50px;
-    border-color: black;
+    this.setState({ text }); 
+  } 
+
+  render() {
+    const { text } = this.state
+    return (
+      <div className='nearby-screen'>
+        <div className='nearby-header-screen'>
+            <h1 className='radius-title-screen' color='white'>RADIUS</h1>
+            <br></br>
+            <h2 className= 'nearby-title-screen' color='white'>Nearby</h2>
+      </div>
+
+      <div className="friend-request">
+      <Dropdown>
+        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary"><img src={frie} alt=""/></Dropdown.Toggle>
+
+        <Dropdown.Menu variant="dark">
+          <Dropdown.Item href="#/action-1">Something</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      </div>
+
+      <div className="row">
+      {this.state.data.map(data => (
+            <div className="col-md-4 animated fadeIn" key={data.id.value}>
+              <div className="card">
+                <div className="card-body">
+                  <div className="avatar">
+                    <img
+                      src={data.picture.large}
+                      className="card-img-top"
+                      alt=""
+                    />
+                  </div>
+                  <h5 className="card-title">
+                    {this.uppercase(data.name.first) +
+                      " " +
+                      this.uppercase(data.name.last)}
+                  </h5>
+                </div>
+                <button className= "friend" onClick={ () => { this.changeText("Sent")}}>{text}</button>
+              </div>
+            </div>
+          ))}
+      </div>
+      <div>
+        <Navbar/>
+      </div>   
+    </div>
+  )
+}
 }
 
-.friend:hover{
-    background-color: rgba(11, 63, 84, 0.468);
-
-}
-
-.nearby-screen{
-    background: rgb(44,82,99);
-    background: linear-gradient(0deg, rgba(44,82,99,1) 21%, rgba(18,37,44,1) 86%);
-    background-repeat:no-repeat;
-}
-
-.radius-title-screen{
-    text-align: center;
-    color: white;
-}
-
-.nearby-title-screen{
-    text-align: center;
-    color: white;
-}
-
-.row{
-    width: 99.9%;
-    padding-bottom: 1%;
-    margin-left: 0%;
-}
-
-.card-text{
-  text-align: center;
-}
-
-.card-title{
-  text-align: center;
-}
-
-.friend-request{
-  position: absolute;
-  right: 12%;
-  top: 1%;
-}
+export default Nearby
