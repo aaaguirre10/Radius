@@ -1,83 +1,87 @@
-import React, { Component } from "react";
-import './Nearby.css'
-import message from "../images/messages.png"
-import friends from "../images/friends.png"
-import profile from "../images/profile.png"
-
-class Nearby extends Component {
-  state = {
-    data: [],
-    per: 5,
-    page: 1,
-    total_pages: null
-  };
-
-  uppercase = word => {
-    return word.charAt(0).toUpperCase() + word.slice(1);
-  };
-
-  loadData = () => {
-    const { per, page, data } = this.state;
-    const endpoint = `https://randomuser.me/api/?nat=us&results=${per}&page=${page}`;
-    fetch(endpoint)
-      .then(response => response.json())
-      .then(json => {
-        this.setState({
-          data: [...data, ...json.results],
-          scrolling: false,
-          total_pages: json.info.results
-        });
-      });
-  };
-
-  componentDidMount() {
-    this.loadData();
+  
+  .col-md-4 {
+    margin-bottom: 30px;
+    padding-left: 5px;
+    padding-right: 10px;
   }
-
-  render() {
-    return (
-      <div className='nearby-screen'>
-        <div className='nearby-header'>
-        <h1 className= 'radius-title' color='white'>RADIUS</h1>
-        <br></br>
-        <h2 className= 'nearby-title' color='white'>Nearby</h2>
-      </div>
-
-      <div className="row">
-      {this.state.data.map(data => (
-            <div className="col-md-4 animated fadeIn" key={data.id.value}>
-              <div className="card">
-                <div className="card-body">
-                  <div className="avatar">
-                    <img
-                      src={data.picture.large}
-                      className="card-img-top"
-                      alt=""
-                    />
-                  </div>
-                  <h5 className="card-title">
-                    {this.uppercase(data.name.first) +
-                      " " +
-                      this.uppercase(data.name.last)}
-                  </h5>
-                </div>
-                <button className= "friend">Add Friend</button>
-              </div>
-            </div>
-          ))}
-      </div>
-
-
-      <div className= 'nearby-bottom'>
-        <button className='message-icon'> <img src={message} alt='message'/></button>
-        <button className='friends-icon'> <img style={{ width: 40, height: 40 }} src={friends} alt='friends'/></button>        
-        <button className='profile-icon'> <img src={profile} alt='profile'/></button>
-      </div>   
-      
-    </div>
-    
-  )
-}
+  
+  .card {
+    background-color: rgb(255, 255, 255, 0.6);
+    padding: 30px;
+    border: solid 1px rgba(0, 0, 0, 0.08);
+  }
+  
+  .card-title {
+    margin-top: 20px;
+  }
+  .card-text {
+    font-size: 14px;
+    color: rgba(0, 0, 0);
+  }
+  .card-text .fa {
+    font-size: 26px;
+  }
+  .avatar {
+    width: 140px;
+    margin: auto;
+  }
+  .avatar img {
+    border: solid 6px transparent;
+    border-radius: 50%;
+  }
+  
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1040px;
+    }
+  }
+.friend{
+    border-radius: 25%;
+    background-color: rgba(11, 63, 84, 0.245);
+    color: white;
+    padding: 12px 20px;
+    border: 2px solid black;
+    border-radius: 50px;
+    border-color: black;
 }
 
-export default Nearby
+.friend:hover{
+    background-color: rgba(11, 63, 84, 0.468);
+
+}
+
+.nearby-screen{
+    background: rgb(44,82,99);
+    background: linear-gradient(0deg, rgba(44,82,99,1) 21%, rgba(18,37,44,1) 86%);
+    background-repeat:no-repeat;
+}
+
+.radius-title-screen{
+    text-align: center;
+    color: white;
+}
+
+.nearby-title-screen{
+    text-align: center;
+    color: white;
+}
+
+.row{
+    width: 99.9%;
+    padding-bottom: 1%;
+    margin-left: 0%;
+}
+
+.card-text{
+  text-align: center;
+}
+
+.card-title{
+  text-align: center;
+}
+
+.friend-request{
+  position: absolute;
+  right: 12%;
+  top: 1%;
+}
