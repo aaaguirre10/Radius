@@ -8,7 +8,7 @@ export async function fetchProfileLogin(id) {
         }
         }).then(function (response) {
         if(response.ok) {
-            return response.json();
+          return response.json();
         }
         else {
             alert('Error creating logging in please try again');
