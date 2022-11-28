@@ -91,7 +91,7 @@ class Nearby extends Component {
                     <span className="phone">{user.phone}</span>
                   </p>
                 </div>
-                <button className= "friend" onClick={event => {this.handleAddFriend(user)}}>Add Friend</button>
+                <button className= "add-friend-button" onClick={event => {this.handleAddFriend(user)}}>Add Friend</button>
               </div>
             </div>
           ))}
