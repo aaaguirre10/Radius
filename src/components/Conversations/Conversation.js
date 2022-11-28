@@ -1,5 +1,4 @@
 import React from 'react'
-// import { useState } from 'react';
 import './Conversation.css'
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -13,7 +12,23 @@ import { useState} from "react";
 
 function Conversation() {
 
-    const [messages, setMessages] = useState([]);
+    const [messageArr, setMessageArr] = useState([]);
+    const [messageText, setMessageText] = useState('');
+    const addMessage = (messageText) => {
+        setMessageArr([...messageArr, messageText]);
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newMessage = {
+            id: messageText,
+            message: messageText,
+            senderBoolean: true
+        } 
+        addMessage(newMessage);
+        setMessageText('');
+    };
+
     const sendMessage = async(e) => { //@TODO refactor function name
         e.preventDefault();
         e.stopPropagation();
@@ -22,13 +37,20 @@ function Conversation() {
 
         let id = messageValue; //make SHA
         const submitted = await sendMessages( // @TODO refactor
-            id,
-            'signature_placeholder',
-            {
-              'hello':'there',
-            },
-            {'message':id/*temp*/},
-            {'MessageSent': messageValue});
+        id,
+        {'sender': sessionStorage.getItem('id')},
+        {'recipient': "TBD"}, 
+        {'timestamp': new Date()}, 
+        {'private':messageValue}//user ID instead of username
+        );
+
+
+            // id,
+            // {'sender': sessionStorage.getItem('id')},
+            // {'recipient': "TBD"}, 
+            // {'timestamp': new Date()}, 
+            // {'private':messageValue}//user ID instead of username
+            // );
         if (submitted) {
             alert("message sent");
             } 
@@ -36,22 +58,25 @@ function Conversation() {
             alert('Error creating logging in please try again');
         }
 
-        setMessages([...messages, messageValue]);
-
 
 
     };
+
+const wrapper = async(e) =>{
+    sendMessage(e);
+    handleSubmit(e);
+}
 
 
   return (
     <main className='conversation-screen'>
         <div className='backarrow-position'>
-            {/* <IconButton>
+            <IconButton  onClick={event => window.location.href='/messages'}>
                 <ArrowBackIosNewIcon 
                     className='messages-header'
-                    onClick={event => window.location.href='/messages'}
+                   
                 />
-            </IconButton> */}
+            </IconButton>
       </div>
         {/* chat header */}
         <div className='conversation-header'>
@@ -60,13 +85,20 @@ function Conversation() {
         </div>
         {/* chat messages */}
         <div className='conversation-messages'>
-            <IndividualMessage/>
+            <ul>
+                {messageArr.map(({ id, message, senderBoolean }) => (
+                    <IndividualMessage key={id} message={message} senderBoolean={senderBoolean}>
+                        {/* <li>{message}</li> */}
+                        {console.log(message)}
+                    </IndividualMessage>
+                ))}
+            </ul>
         </div>
 
         {/* chat input */}
         <div className='conversation-input'>
-            <form onSubmit={sendMessage}>
-                <input id='message' placeholder='Are we in reach?' type='text'/>
+            <form onSubmit={wrapper}>
+                <input id='message' placeholder='Are we in reach?' type='text' value={messageText} onChange={(e) => setMessageText(e.target.value)}/>
                 <button>Send Message</button>
             </form>
             

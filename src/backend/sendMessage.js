@@ -1,4 +1,4 @@
-export async function sendMessages(id, signature, public_data, protected_data, private_data){
+export async function sendMessages(id, sender, recipient, timestamp, private_data){
     return await fetch('http://localhost:8080/add_block/messages', {
         method: 'POST',
         headers : {
@@ -7,9 +7,9 @@ export async function sendMessages(id, signature, public_data, protected_data, p
         },
         body : JSON.stringify( {
         'id': id,//TODO: Combination of sha256(username+password),
-        'signature': signature, //TODO: rsa.sign(id+'It is me', private_key)
-        'public': public_data,
-        'protected': protected_data,
+        'sender': sender, //TODO: rsa.sign(id+'It is me', private_key)
+        'recipient': recipient,
+        'timestamp': timestamp,
         'private': private_data
         })
     }).then(function (response) {

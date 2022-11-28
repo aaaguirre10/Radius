@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye} from '@fortawesome/free-solid-svg-icons'
 import {fetchProfileLogin} from '../../backend/login'
 import { sha256 } from 'js-sha256';
+import { AlternateEmail } from '@mui/icons-material';
 
 
 
@@ -20,8 +21,8 @@ function Login() {
   const [passwordShown, setPasswordShown] = useState(false);
   const [validated, setValidated] = useState(false);
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
   const eye = <FontAwesomeIcon icon={faEye} />;
   
@@ -35,17 +36,20 @@ function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     event.stopPropagation();
-    
+
     setValidated(true);
     const id = sha256(username+password);
     const loginResponse = await fetchProfileLogin(id);
+
     if (loginResponse === 'NOT_FOUND') {
       //TODO: Refactor opportunity; extract outside of if/else block
       sessionStorage.setItem('id', id); 
       sessionStorage.setItem('username', username);
       //redirect to profile creation
+      alert("Going to signup");
       navigate('/signup');
     } else {
+      alert("going to nerby");
       //TODO: Refactor opportunity
       sessionStorage.setItem('id', id); 
       sessionStorage.setItem('username', username);
@@ -104,7 +108,7 @@ function Login() {
           </Form.Group>
 
           {/* Login Button */}
-          <Button onClick={event => window.location.href='/nearby'} className="login-btn" type="submit">
+          <Button className="login-btn" type="submit">
             Login
           </Button>
         </Form>
