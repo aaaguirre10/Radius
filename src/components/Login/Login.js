@@ -9,9 +9,8 @@ import Form from 'react-bootstrap/Form';
 import './Login.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye} from '@fortawesome/free-solid-svg-icons'
-import {fetchProfileLogin} from '../../backend/login'
+import { fetchProfileLogin } from '../../backend/login'
 import { sha256 } from 'js-sha256';
-import { AlternateEmail } from '@mui/icons-material';
 
 
 
