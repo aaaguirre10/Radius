@@ -20,6 +20,7 @@
 
 .conversation-messages{
     flex: 1;
+    overflow-y: scroll;
 
 }
 
@@ -33,18 +34,20 @@
 
 .conversation-input > form{
     flex: 1;
+    display: flex;
+    flex-direction: row;
 }
 
 .conversation-input > form > input{
-    width: 90%;
+    width: 70%;
     outline-width: 0;
     border-radius: 25px;
     padding: 5px;
 }
 
-.conversation-input > form > button{
+/* .conversation-input > form > button{
     display: block;
-}
+} */
 
 .conversation-camera{
     color: white;
