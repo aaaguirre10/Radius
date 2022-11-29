@@ -2,49 +2,71 @@ import { sha256 } from "js-sha256";
 
 //TODO: Fetch from profiles blockchain, hardcoded right now
 export async function fetchNearby() {
-    const nearbyPeople = [
+    let nearbyPeople = [
         {
           id: sha256('daviddominguez'),
           firstName: 'david',
           lastName: 'dominguez',
-          imgUrl: `https://avatars.dicebear.com/api/bottts/daviddominguez.svg`,
-          location: {
-            city: 'Juarez',
-            state: 'Chihuahua'
-          }
+          imgURL: `https://avatars.dicebear.com/api/bottts/daviddominguez.svg`,
+          bio: 'hello'
         },
         {
           id: sha256('alangamez'),
           firstName: 'alan',
           lastName: 'gamez',
-          imgUrl: `https://avatars.dicebear.com/api/bottts/alangamez.svg`,
-          location: {
-            city: 'El Paso',
-            state: 'Texas'
-          }
+          imgURL: `https://avatars.dicebear.com/api/bottts/alangamez.svg`,
+          bio: '420'
         },
         {
           id: sha256('jiohernandez'),
           firstName: 'jio',
           lastName: 'hernandez',
-          imgUrl: `https://avatars.dicebear.com/api/bottts/jiohernandez.svg`,
-          location: {
-            city: 'El Paso',
-            state: 'Texas'
-          }
+          imgURL: `https://avatars.dicebear.com/api/bottts/jiohernandez.svg`,
+          bio: 'estoy gigante'
         },
         {
           id: sha256('donleo'),
           firstName: 'don',
           lastName: 'leo',
-          imgUrl: `https://avatars.dicebear.com/api/bottts/donleo.svg`,
-          location: {
-            city: 'Las Cruces',
-            state: 'NM'
-          }
+          imgURL: `https://avatars.dicebear.com/api/bottts/donleo.svg`,
+          bio: 'soy leo'
         }
       ];
-      return nearbyPeople;
+
+      const fetched = await fetch('http://localhost:8080/get_chain/profiles', {
+      method: 'GET',
+      headers : {
+        'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches
+        'Content-Type' : 'application/json'
+      },
+    }).then(async function (response) {
+      let fetchedChain = []
+      if(response.ok) {
+        const chain = await response.json().then(function(response) {
+          return response['chain'];
+        });
+        chain.map(user => {
+          const public_data = user['public_data'];
+          const newUser = {
+            id: user['id'],
+            firstName: public_data['firstName'],
+            lastName: public_data['lastName'],
+            imgURL: public_data['imgURL'],
+            bio: public_data['bio']
+          }
+          if(newUser['id'] !== 0) {
+            fetchedChain = [...fetchedChain, newUser];
+          }
+        })
+
+      }
+      return fetchedChain;
+    }).catch(function(response) {
+        console.log(response);
+        return [];
+    });
+    nearbyPeople = [...nearbyPeople, ...fetched];
+    return fetched;
 }
 
 export async function sendFriendRequest(id, public_data, protected_data, private_data) {

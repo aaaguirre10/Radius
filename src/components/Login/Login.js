@@ -43,7 +43,7 @@ function Login() {
     if (loginResponse['id'] === 'NOT_FOUND') {
       //TODO: Refactor opportunity; extract outside of if/else block
       sessionStorage.setItem('id', id); 
-      sessionStorage.setItem('username', username);
+      sessionStorage.setItem('userName', username);
       //redirect to profile creation
       alert("Going to signup");
       navigate('/signup');
@@ -51,7 +51,7 @@ function Login() {
       alert("going to nerby");
       //TODO: Refactor opportunity
       sessionStorage.setItem('id', id); 
-      sessionStorage.setItem('username', username);
+      sessionStorage.setItem('userName', username);
       //redirect to home screen and log in
       navigate("/nearby");
     }

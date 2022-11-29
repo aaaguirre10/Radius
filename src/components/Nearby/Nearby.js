@@ -32,13 +32,14 @@ class Nearby extends Component {
   };
 
   loadNearbyUsers = async () => {
+    
     this.setState({
       nearbyUsers: await fetchNearby(),
     });
   };
 
-  componentDidMount() {
-    this.loadNearbyUsers();
+  async componentDidMount() {
+    await this.loadNearbyUsers();
   }
 
   handleAddFriend = async (user) => {
@@ -72,10 +73,14 @@ class Nearby extends Component {
 
         <div className="cards-container">
           {this.state.nearbyUsers.map((user) => (
-            <div>
-              <Cards user={user} />
+            <div key={user.id}>
+              <Cards user={user} key={user.id} />
             </div>
-          ))}
+          ))
+          }
+          {
+            console.log(this.state.nearbyUsers)
+          }
         </div>
         <div>
           <Navbar />

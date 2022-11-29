@@ -29,14 +29,14 @@ function Conversation() {
         setMessageText('');
     };
 
-    const sendMessage = async(e) => { //@TODO refactor function name
+    const sendMessage = async(e) => { //@TODO refactor function name (set this as handleSendMessage())
         e.preventDefault();
         e.stopPropagation();
         console.log(document.getElementById('message').value);
         let messageValue = document.getElementById('message').value;
 
         let id = messageValue; //make SHA
-        const submitted = await sendMessages( // @TODO refactor
+        const submitted = await sendMessages( // @TODO refactor (set this as sendMessage())
         id,
         {'sender': sessionStorage.getItem('id')},
         {'recipient': "TBD"}, 

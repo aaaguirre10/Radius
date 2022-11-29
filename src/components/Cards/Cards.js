@@ -22,7 +22,7 @@ class Card extends Component {
           <div className="card-body">
             <div className="avatar">
               <img
-                src={this.state.user.imgUrl}
+                src={this.state.user.imgURL}
                 className="card-img-top"
                 alt=""
               />
@@ -30,13 +30,10 @@ class Card extends Component {
             <h5 className="card-title">
               {this.state.user.firstName + " " + this.state.user.lastName}
             </h5>
-            {/* <p className="card-text">
-              {this.state.user.location.city +
-                ", " +
-                this.uppercase(this.state.user.location.state)}
+            <p className="card-text">
+              {this.state.user.bio}
               <br />
-              <span className="phone">{this.state.user.phone}</span>
-            </p> */}
+            </p>
           </div>
           <button
             className="add-friend-button"

@@ -52,6 +52,7 @@ function Signup() {
     event.preventDefault();
     event.stopPropagation();
     const id = sessionStorage.getItem('id');
+    const userName = sessionStorage.getItem('userName');
 
     //Refactoring opportunity,
     //extract methods to generate public/protected/private requests
@@ -62,6 +63,7 @@ function Signup() {
       id,
       'signature_placeholder',
       {
+        'userName': userName,
         'firstName': firstName,
         'lastName': lastName,
         'bio': bio,
@@ -129,7 +131,7 @@ function Signup() {
               className='username-input'
               type="text" 
               placeholder="Username" 
-              value={sessionStorage.getItem('username')}
+              value={sessionStorage.getItem('userName')}
               disabled
             />
           </Form.Group>
