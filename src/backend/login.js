@@ -15,7 +15,7 @@ export async function fetchProfileLogin(id) {
         }
     });
     //await submitProfile(id); //TODO: Remove when sign up implemented (sign up will be responsible for creating block)
-    return profileSearchResponse['id'];
+    return profileSearchResponse;
 
 }
 
