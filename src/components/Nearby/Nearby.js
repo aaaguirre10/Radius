@@ -3,9 +3,8 @@ import "./Nearby.css";
 import Cards from "../Cards/Cards";
 import Navbar from "../Navbar/Navbar";
 import { sha256 } from "js-sha256";
-import { fetchNearby, sendFriendRequest } from "../../backend/nearby";
-import Dropdown from "react-bootstrap/Dropdown";
-import frie from "../images/frie.png";
+import { fetchNearby, sendFriendRequest } from '../../backend/nearby';
+
 class Nearby extends Component {
   constructor(props) {
     super(props);
@@ -32,6 +31,7 @@ class Nearby extends Component {
   };
 
   loadNearbyUsers = async () => {
+  
     this.setState({
       nearbyUsers: await fetchNearby(),
     });

@@ -8,42 +8,79 @@ export async function fetchNearby() {
           firstName: 'david',
           lastName: 'dominguez',
           imgUrl: `https://avatars.dicebear.com/api/bottts/daviddominguez.svg`,
-          location: {
-            city: 'Juarez',
-            state: 'Chihuahua'
-          }
+          bio: 'que rollo alv'
         },
         {
           id: sha256('alangamez'),
           firstName: 'alan',
           lastName: 'gamez',
           imgUrl: `https://avatars.dicebear.com/api/bottts/alangamez.svg`,
-          location: {
-            city: 'El Paso',
-            state: 'Texas'
-          }
+          bio: 'top g'
         },
         {
           id: sha256('jiohernandez'),
           firstName: 'jio',
           lastName: 'hernandez',
           imgUrl: `https://avatars.dicebear.com/api/bottts/jiohernandez.svg`,
-          location: {
-            city: 'El Paso',
-            state: 'Texas'
-          }
+          bio: 'im tall'
         },
         {
           id: sha256('donleo'),
           firstName: 'don',
           lastName: 'leo',
           imgUrl: `https://avatars.dicebear.com/api/bottts/donleo.svg`,
-          location: {
-            city: 'Las Cruces',
-            state: 'NM'
-          }
+          bio: 'hello world' 
         }
       ];
+
+      await fetch('http://localhost:8080/get_chain/profiles', {
+      method: 'GET',
+      headers : {
+        'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches
+        'Content-Type' : 'application/json'
+      }
+    }).then(function (response) {
+      if(response.ok) {
+        response.json().then(function(response) {
+          console.log(response);
+          
+          const chainArray = response['chain'];
+            
+            chainArray.map(user => {
+
+              const id = user['id'];
+              if (id === 0) {
+                return null;
+              }
+              const firstName = user['public_data']['firstName'];
+              const lastName = user['public_data']['lastName'];
+              const imgUrl = 'https://avatars.dicebear.com/api/bottts/donleo.svg';
+              const bio = user['public_data']['bio'];
+
+              const toAdd = {
+                id: id,
+                firstName: firstName,
+                lastName: lastName,
+                imgUrl: imgUrl,
+                bio: bio
+              }
+
+              nearbyPeople.push(toAdd);
+              console.log(nearbyPeople);
+              return 0;
+            });
+
+        });
+        // alert('fetched');
+        return true;
+      } 
+      else {
+        return false;
+      }
+    }).catch(function(response) {
+        return false;
+    });
+      console.log(nearbyPeople);
       return nearbyPeople;
 }
 
