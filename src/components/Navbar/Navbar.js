@@ -9,18 +9,18 @@ function Navbar() {
   return (
     <main>
         <div>
-          <nav class="nav">
-            <a href="/messages" class="nav__link">
+          <nav className="nav">
+            <a href="/messages" className="nav__link">
                 <IconButton>
                     <MessageIcon className='icon-color'/>
                 </IconButton>
             </a>
-            <a href="/nearby" class="nav__link">
+            <a href="/nearby" className="nav__link">
                 <IconButton>
                     <HomeIcon className='icon-color'/>
                 </IconButton>
             </a>
-            <a href="/" class="nav__link">
+            <a href="/profile" className="nav__link">
                 <IconButton>
                     <AccountCircleIcon className='icon-color'/>
                 </IconButton>
