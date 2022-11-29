@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import './Nearby.css'
 import Navbar from '../Navbar/Navbar'
 import { sha256 } from "js-sha256";
 import { fetchNearby, sendFriendRequest } from '../../backend/nearby';
-
+import Dropdown from 'react-bootstrap/Dropdown';
+import frie from '../images/frie.png';
 class Nearby extends Component {
 
   constructor(props) {
@@ -64,42 +65,54 @@ class Nearby extends Component {
             <h1 className='radius-title-screen' color='white'>RADIUS</h1>
             <br></br>
             <h2 className= 'nearby-title-screen' color='white'>Nearby</h2>
-      </div>
+        </div>
 
-      <div className="row">
-      {this.state.nearbyUsers.map(user => (
-            <div className="col-md-4 animated fadeIn" key={user.id}>
-              <div className="card">
-                <div className="card-body">
-                  <div className="avatar">
-                    <img
-                      src={user.imgUrl}
-                      className="card-img-top"
-                      alt=""
-                    />
+        <div className="friend-request">
+        <Dropdown>
+          <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary"><img src={frie} alt=""/></Dropdown.Toggle>
+
+          <Dropdown.Menu variant="dark">
+            <Dropdown.Item href="#/action-1">Something</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        </div>
+
+        <div className="row">
+          {this.state.nearbyUsers.map(user => (
+                <div className="col-md-4 animated fadeIn" key={user.id}>
+                  <div className="card">
+                    <div className="card-body">
+                      <div className="avatar">
+                        <img
+                          src={user.imgUrl}
+                          className="card-img-top"
+                          alt=""
+                        />
+                      </div>
+                      <h5 className="card-title">
+                        {this.uppercase(user.firstName) +
+                          " " +
+                          this.uppercase(user.lastName)}
+                      </h5>
+                      <p className="card-text">
+                        {user.location.city +
+                          ", " +
+                          this.uppercase(user.location.state)}
+                        <br />
+                        <span className="phone">{user.phone}</span>
+                      </p>
+                    </div>
+                    <button className= "add-friend-button" onClick={event => {this.handleAddFriend(user)}}>Add Friend</button>
                   </div>
-                  <h5 className="card-title">
-                    {this.uppercase(user.firstName) +
-                      " " +
-                      this.uppercase(user.lastName)}
-                  </h5>
-                  <p className="card-text">
-                    {user.location.city +
-                      ", " +
-                      this.uppercase(user.location.state)}
-                    <br />
-                    <span className="phone">{user.phone}</span>
-                  </p>
                 </div>
-                <button className= "add-friend-button" onClick={event => {this.handleAddFriend(user)}}>Add Friend</button>
-              </div>
-            </div>
-          ))}
+              ))}
+        </div>
+
+        <div>
+          <Navbar/>
+        </div>
+           
       </div>
-      <div>
-        <Navbar/>
-      </div>   
-    </div>
   )
 }
 }

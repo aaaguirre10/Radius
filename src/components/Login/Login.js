@@ -41,7 +41,7 @@ function Login() {
     const id = sha256(username+password);
     const loginResponse = await fetchProfileLogin(id);
 
-    if (loginResponse === 'NOT_FOUND') {
+    if (loginResponse['id'] === 'NOT_FOUND') {
       //TODO: Refactor opportunity; extract outside of if/else block
       sessionStorage.setItem('id', id); 
       sessionStorage.setItem('username', username);

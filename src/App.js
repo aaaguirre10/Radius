@@ -6,7 +6,8 @@ import Login from './components/Login/Login'
 import Messages from './components/Messages/Messages';
 import Signup from './components/Signup/Signup';
 import Conversation from './components/Conversations/Conversation';
-import Nearby from './components/Nearby/Nearby'
+import Nearby from './components/Nearby/Nearby';
+import Profile from './components/Profile/Profile';
 // import Settings from './components/Settings/Settings'
 import "./styles.css"
 
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/nearby" element={<Nearby/>}></Route>
         {/* <Route exact path="/settings" element={<Settings/>}></Route> */}
         <Route exact path="/conversation" element={<Conversation/>}></Route>
+        <Route exact path="/profile" element={<Profile/>}></Route>
       </Routes>
     </Router>
   )

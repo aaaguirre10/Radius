@@ -21,9 +21,9 @@ function Signup() {
   const [imgURL, setImgURL] = React.useState("https://avatars.dicebear.com/api/bottts/d.svg");
   const [inputVal, setInputVal] = React.useState("");
   const [selectedSprite, setSelectedSprite] = React.useState(sprites[0]);
-  let [firstName, setFirstName] = useState('');
-  let [lastName, setLastName] = useState('');
-  let [bio, setBio] = useState('');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [bio, setBio] = useState('');
 
   const handleInputChange = (e) => {
     setInputVal(() => {
@@ -52,18 +52,20 @@ function Signup() {
     event.preventDefault();
     event.stopPropagation();
     const id = sessionStorage.getItem('id');
+
     //Refactoring opportunity,
     //extract methods to generate public/protected/private requests
-    firstName = document.getElementById('formBasicFirstName').value;
-    lastName = document.getElementById('formBasicLastName').value;
-    bio = document.getElementById('formBasicPassword').value;
+    // firstName = document.getElementById('formBasicFirstName').value;
+    // lastName = document.getElementById('formBasicLastName').value;
+    // bio = document.getElementById('formBasicPassword').value;
     const submitted = await submitProfile(
       id,
       'signature_placeholder',
       {
         'firstName': firstName,
         'lastName': lastName,
-        'bio': bio
+        'bio': bio,
+        'imgURL': imgURL
       },
       {'message':id/*temp*/},
       {'message':id/*temp*/});
