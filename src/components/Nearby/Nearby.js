@@ -32,9 +32,14 @@ class Nearby extends Component {
   };
 
   loadNearbyUsers = async () => {
+    const nearbyFetched =  await fetchNearby()
     this.setState({
-      nearbyUsers: await fetchNearby()
-    })
+      nearbyUsers: nearbyFetched
+    });
+    console.log('here');
+    console.log(this.state.nearbyUsers);
+    
+    
   }
 
   componentDidMount() {
@@ -84,9 +89,7 @@ class Nearby extends Component {
                       this.uppercase(user.lastName)}
                   </h5>
                   <p className="card-text">
-                    {user.location.city +
-                      ", " +
-                      this.uppercase(user.location.state)}
+                    {user.bio}
                     <br />
                     <span className="phone">{user.phone}</span>
                   </p>
