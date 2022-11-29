@@ -6,7 +6,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import IndividualMessage from './IndividualMessage';
 // import Chat from '../Messages/Chat';
-import { getMessage, sendMessages } from '../../backend/sendMessage';
+import { getMessages, sendMessages } from '../../backend/sendMessage';
 import { useState} from "react";
 
 
@@ -62,10 +62,23 @@ function Conversation() {
 
     };
 
-const wrapper = async(e) =>{
-    sendMessage(e);
-    handleSubmit(e);
-}
+    const wrapper = async(e) =>{
+        sendMessage(e);
+        handleSubmit(e);
+    }
+
+    const renderMessages = async(e) => {
+        // e.preventDefault();
+        // e.stopPropagation();
+
+        const blockchainResponse = await getMessages(2,2);
+        console.log(blockchainResponse)
+    }
+
+    const renderPreviousMessages = async(e) => {
+        renderMessages(e);
+    }
+    renderPreviousMessages();
 
 
   return (

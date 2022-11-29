@@ -25,4 +25,20 @@ export async function sendMessages(id, sender, recipient, timestamp, private_dat
     });
 }
 
-export async function getMessages(){};
+export async function getMessages(sender, recipient){
+    const getMessageChain = await fetch('http://localhost:8080/get_chain/messages', {
+        method: 'GET',
+        headers : {
+            'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches
+        }
+        }).then(function (response){
+            if(response.ok){
+                return response.json();
+            }
+            else{
+                alert('Could not fetch message blockchain');
+            }
+        });
+    
+    return getMessageChain;
+};

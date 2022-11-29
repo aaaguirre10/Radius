@@ -35,7 +35,7 @@
       max-width: 1040px;
     }
   }
-.friend{
+.add-friend-button{
     border-radius: 25%;
     background-color: rgba(11, 63, 84, 0.245);
     color: white;
@@ -45,7 +45,7 @@
     border-color: black;
 }
 
-.friend:hover{
+.add-friend-button:hover{
     background-color: rgba(11, 63, 84, 0.468);
 
 }
