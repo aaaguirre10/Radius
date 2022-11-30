@@ -8,9 +8,17 @@ import IndividualMessage from './IndividualMessage';
 // import Chat from '../Messages/Chat';
 import { getMessages, sendMessages } from '../../backend/sendMessage';
 import { useState} from "react";
+import {useEffect} from "react";
 
 
 function Conversation() {
+    if(sessionStorage.getItem('id') == null){
+        alert("PERMISSION DENIED")
+        window.location.href='/'
+    }
+    const urlParams = new URLSearchParams(window.location.search);
+    const participant = urlParams.get("otherParticipant");
+   
 
     const [messageArr, setMessageArr] = useState([]);
     const [messageText, setMessageText] = useState('');
@@ -38,8 +46,8 @@ function Conversation() {
         let id = messageValue; //make SHA
         const submitted = await sendMessages( // @TODO refactor (set this as sendMessage())
         id,
-        {'sender': sessionStorage.getItem('id')},
-        {'recipient': "TBD"}, 
+        {'sender': sessionStorage.getItem('userName')},
+        {'recipient': participant}, 
         {'timestamp': new Date()}, 
         {'private':messageValue}//user ID instead of username
         );
@@ -67,18 +75,44 @@ function Conversation() {
         handleSubmit(e);
     }
 
-    const renderMessages = async(e) => {
+
+    const handleRenderBlockchainOrigin = (messageToRender, sender) => {
+        let isSender;
+        if (sender === sessionStorage.getItem("userName")){
+            isSender = true;
+        } else {isSender = false;}
+
+        const newMessage = {
+            id: messageText,
+            message: messageToRender,
+            senderBoolean: isSender
+        } 
+        addMessage(newMessage);
+        setMessageText('');
+    }
+    const renderMessages = async() => {
         // e.preventDefault();
         // e.stopPropagation();
 
-        const blockchainResponse = await getMessages(2,2);
+        const blockchainResponse = await getMessages(sessionStorage.getItem('userName'), participant);
         console.log(blockchainResponse)
+        for (let index = 0; index<blockchainResponse.length; index++){
+            handleRenderBlockchainOrigin(blockchainResponse[index].private_data.private, blockchainResponse[index].signature.sender);
+        }
+
+        
     }
 
-    const renderPreviousMessages = async(e) => {
-        renderMessages(e);
+    const renderPreviousMessages = async() => {
+        renderMessages();
     }
-    renderPreviousMessages();
+    
+    useEffect(() => {
+        const interval = setInterval(() => {
+          renderPreviousMessages();
+        }, 10000);
+        return () => clearInterval(interval);
+      }, []);
 
 
   return (
@@ -94,7 +128,7 @@ function Conversation() {
         {/* chat header */}
         <div className='conversation-header'>
             <AccountCircleIcon className='conversation-icon'/>
-            <strong>Antonio Aguirre</strong>
+            <strong>{participant}</strong>
         </div>
         {/* chat messages */}
         <div className='conversation-messages'>
