@@ -40,5 +40,19 @@ export async function getMessages(sender, recipient){
             }
         });
     
-    return getMessageChain;
+
+    let correctMessages = [];
+    for (let messageIndex = 0; messageIndex<getMessageChain.length; messageIndex++){
+        if (getMessageChain.chain[messageIndex].signature.sender === sender){
+            if (getMessageChain.chain[messageIndex].public_data.recipient === recipient){
+                correctMessages.push(getMessageChain.chain[messageIndex])
+            }
+        }
+        else if (getMessageChain.chain[messageIndex].signature.sender === recipient){
+            if (getMessageChain.chain[messageIndex].public_data.recipient === sender){
+                correctMessages.push(getMessageChain.chain[messageIndex])
+            }
+        }
+    };
+    return correctMessages;
 };

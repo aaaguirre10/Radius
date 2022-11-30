@@ -9,6 +9,7 @@ import Chat from './Chat';
 import Navbar from '../Navbar/Navbar';
 import { fetchConversations } from '../../backend/messages'
 import Stories from '../Stories/Stories';
+import { DiscFullOutlined } from '@mui/icons-material';
 
 class Messages extends Component {
   constructor(props) {
@@ -17,10 +18,13 @@ class Messages extends Component {
       conversations: []
     }
   }
+
   
   fetchData = async () => {
     const conversationsFetched = await fetchConversations(sessionStorage.getItem('id'));
   }
+
+
 
   componentDidMount() {
     this.fetchData();
@@ -44,7 +48,8 @@ class Messages extends Component {
   
         {/* Message Section */}
         <div className='messages-container'>
-          <Chat/>
+  
+          <Chat otherParticipant={"leor5d4"}/>
           <Chat/>
           <Chat/>
           <Chat/>
