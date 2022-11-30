@@ -1,0 +1,21 @@
+.story {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 5px 0 5px;
+    color: white;
+}
+
+.story:first-child {
+    margin-left: 50px;
+    
+}
+
+.story:last-child {
+    margin-right: 50px;
+  }
+
+.accountName {
+    font-size: 0.65em;
+    margin: 1em;
+}
