@@ -132,7 +132,6 @@ function Signup() {
               type="text" 
               placeholder="Username" 
               value={sessionStorage.getItem('userName')}
-              disabled
             />
           </Form.Group>
 

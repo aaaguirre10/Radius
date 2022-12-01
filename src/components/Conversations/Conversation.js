@@ -10,7 +10,6 @@ import { getMessages, sendMessages } from '../../backend/sendMessage';
 import { useState} from "react";
 import {useEffect} from "react";
 
-
 function Conversation() {
     if(sessionStorage.getItem('id') == null){
         alert("PERMISSION DENIED")

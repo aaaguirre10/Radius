@@ -1,7 +1,9 @@
-export async function fetchProfileLogin(id) {
+import { HOST } from './hosts'
 
+export async function fetchProfileLogin(id) {
+  
     //look for profile
-    const profileSearchResponse = await fetch('http://localhost:8080/get_block/profiles/'+id, {
+    const profileSearchResponse = await fetch(HOST+'get_block/profiles/'+id, {
         method: 'GET',
         headers : {
             'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches
@@ -20,7 +22,8 @@ export async function fetchProfileLogin(id) {
 }
 
 export async function submitProfile(id, signature, public_data, protected_data, private_data) {
-    return await fetch('http://localhost:8080/add_block/profiles', {
+ 
+  return await fetch(HOST+'add_block/profiles', {
       method: 'POST',
       headers : {
         'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches

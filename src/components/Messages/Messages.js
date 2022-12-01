@@ -51,7 +51,7 @@ class Messages extends Component {
         {/* Message Section */}
         <div className='messages-container'>
   
-          <Chat otherParticipant={"leor5d4"}/>
+          <Chat user={"leor5d4"}/>
           <Chat/>
           <Chat/>
           <Chat/>

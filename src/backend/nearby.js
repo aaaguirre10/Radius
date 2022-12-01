@@ -1,5 +1,5 @@
 import { sha256 } from "js-sha256";
-
+import { HOST } from './hosts';
 //TODO: Fetch from profiles blockchain, hardcoded right now
 export async function fetchNearby() {
     let nearbyPeople = [
@@ -33,7 +33,7 @@ export async function fetchNearby() {
         }
       ];
 
-      const fetched = await fetch('http://localhost:8080/get_chain/profiles', {
+      const fetched = await fetch(HOST+'get_chain/profiles', {
       method: 'GET',
       headers : {
         'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches
@@ -70,7 +70,7 @@ export async function fetchNearby() {
 }
 
 export async function sendFriendRequest(id, public_data, protected_data, private_data) {
-    return await fetch('http://localhost:8080/add_block/interactions', {
+    return await fetch(HOST+'add_block/interactions', {
       method: 'POST',
       headers : {
         'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches

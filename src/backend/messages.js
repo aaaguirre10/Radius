@@ -1,7 +1,8 @@
+import { HOST } from './hosts'
 export async function fetchConversations(id) {
     
     //look for profile
-    const profileSearchResponse = await fetch('http://localhost:8080/get_chain/messages', {
+    const profileSearchResponse = await fetch(HOST+'get_chain/messages', {
         method: 'GET',
         headers : {
             'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches

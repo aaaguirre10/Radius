@@ -1,5 +1,6 @@
+import { HOST } from './hosts';
 export async function sendMessages(id, sender, recipient, timestamp, private_data){
-    return await fetch('http://localhost:8080/add_block/messages', {
+    return await fetch(HOST+'add_block/messages', {
         method: 'POST',
         headers : {
         'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches
@@ -26,7 +27,7 @@ export async function sendMessages(id, sender, recipient, timestamp, private_dat
 }
 
 export async function getMessages(sender, recipient){
-    const getMessageChain = await fetch('http://localhost:8080/get_chain/messages', {
+    const getMessageChain = await fetch(HOST+'get_chain/messages', {
         method: 'GET',
         headers : {
             'Access-Control-Allow-Origin' : '*', //Needed to enable CORS fetches
