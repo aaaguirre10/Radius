@@ -8,7 +8,6 @@ function Home() {
 
   const redirectToLogin = () => { 
     navigate('/login');
-    console.log("hello");
   }
 
   return (

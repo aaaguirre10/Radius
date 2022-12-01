@@ -9,7 +9,8 @@ import Chat from './Chat';
 import Navbar from '../Navbar/Navbar';
 import { fetchConversations } from '../../backend/messages'
 import Stories from '../Stories/Stories';
-import { DiscFullOutlined } from '@mui/icons-material';
+import { DiscFullOutlined, ThirtyFpsSelect } from '@mui/icons-material';
+
 
 class Messages extends Component {
   constructor(props) {
@@ -22,12 +23,18 @@ class Messages extends Component {
   
   fetchData = async () => {
     const conversationsFetched = await fetchConversations(sessionStorage.getItem('id'));
+    
+    console.log('conv fetched below');
+    console.log(conversationsFetched)
+    this.setState({
+      conversations: conversationsFetched
+    })
   }
 
 
 
-  componentDidMount() {
-    this.fetchData();
+  async componentDidMount() {
+    await this.fetchData();
   }
 
   render() {
@@ -49,7 +56,7 @@ class Messages extends Component {
         {/* Message Section */}
         <div className='messages-container'>
   
-          <Chat user={"leor5d4"}/>
+          <Chat id={"leor5d4"} userName={'leor5d4'}/>
           <Chat/>
           <Chat/>
           <Chat/>

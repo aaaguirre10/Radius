@@ -57,7 +57,6 @@ class Profile extends Component {
 
     fetchProfile = async () => {
       const profileResponse = await fetchProfileLogin(this.state.id);
-      console.log(profileResponse);
       const public_data = profileResponse['public_data'];
       this.firstName = public_data['firstName'];
       this.lastName = public_data['lastName'];

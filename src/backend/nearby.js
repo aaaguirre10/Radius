@@ -52,7 +52,8 @@ export async function fetchNearby() {
             firstName: public_data['firstName'],
             lastName: public_data['lastName'],
             imgURL: public_data['imgURL'],
-            bio: public_data['bio']
+            bio: public_data['bio'],
+            userName: public_data['userName'],
           }
           if(newUser['id'] !== 0) {
             fetchedChain = [...fetchedChain, newUser];

@@ -3,7 +3,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import './IndividualMessage.css'
 import { useState } from 'react';
 
-function IndividualMessage({key, message, senderBoolean}) {
+function IndividualMessage({message, senderBoolean}) {
   if (senderBoolean === true){
     return (
       <div className='individualMessage-container-sender'>

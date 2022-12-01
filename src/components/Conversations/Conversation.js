@@ -9,6 +9,7 @@ import IndividualMessage from './IndividualMessage';
 import { getMessages, sendMessages } from '../../backend/sendMessage';
 import { useState} from "react";
 import {useEffect} from "react";
+import { fetchProfileLogin } from '../../backend/login';
 
 function Conversation() {
     if(sessionStorage.getItem('id') == null){
@@ -16,11 +17,12 @@ function Conversation() {
         window.location.href='/'
     }
     const urlParams = new URLSearchParams(window.location.search);
-    const participant = urlParams.get("otherParticipant");
-   
+    const participantId = urlParams.get('id');
+    const participantUsername = urlParams.get('userName')
 
     const [messageArr, setMessageArr] = useState([]);
     const [messageText, setMessageText] = useState('');
+
     const addMessage = (messageText) => {
         setMessageArr([...messageArr, messageText]);
     };
@@ -39,14 +41,13 @@ function Conversation() {
     const sendMessage = async(e) => { //@TODO refactor function name (set this as handleSendMessage())
         e.preventDefault();
         e.stopPropagation();
-        console.log(document.getElementById('message').value);
         let messageValue = document.getElementById('message').value;
 
         let id = messageValue; //make SHA
         const submitted = await sendMessages( // @TODO refactor (set this as sendMessage())
         id,
-        {'sender': sessionStorage.getItem('userName')},
-        {'recipient': participant}, 
+        {'sender': sessionStorage.getItem('id')},
+        {'recipient': participantId}, 
         {'timestamp': new Date()}, 
         {'private':messageValue}//user ID instead of username
         );
@@ -90,16 +91,11 @@ function Conversation() {
         setMessageText('');
     }
     const renderMessages = async() => {
-        // e.preventDefault();
-        // e.stopPropagation();
-
-        const blockchainResponse = await getMessages(sessionStorage.getItem('userName'), participant);
+        const blockchainResponse = await getMessages(sessionStorage.getItem('userName'), participantId);
         console.log(blockchainResponse)
         for (let index = 0; index<blockchainResponse.length; index++){
             handleRenderBlockchainOrigin(blockchainResponse[index].private_data.private, blockchainResponse[index].signature.sender);
         }
-
-        
     }
 
     const renderPreviousMessages = async() => {
@@ -107,10 +103,15 @@ function Conversation() {
     }
     
     useEffect(() => {
-        const interval = setInterval(() => {
-          renderPreviousMessages();
-        }, 10000);
-        return () => clearInterval(interval);
+        async function fetchData() {
+            // ...
+            const interval = setInterval(() => {
+                renderPreviousMessages();
+                }, 10000);
+            return () => clearInterval(interval);
+        }
+        
+        
       }, []);
 
 
@@ -127,7 +128,7 @@ function Conversation() {
         {/* chat header */}
         <div className='conversation-header'>
             <AccountCircleIcon className='conversation-icon'/>
-            <strong>{participant}</strong>
+            <strong>{participantUsername}</strong>
         </div>
         {/* chat messages */}
         <div className='conversation-messages'>
