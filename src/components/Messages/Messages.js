@@ -8,6 +8,7 @@ import IconButton from '@mui/material/IconButton';
 import Chat from './Chat';
 import Navbar from '../Navbar/Navbar';
 import { fetchConversations } from '../../backend/messages'
+import Stories from '../Stories/Stories';
 import { DiscFullOutlined } from '@mui/icons-material';
 
 class Messages extends Component {
@@ -32,16 +33,13 @@ class Messages extends Component {
   render() {
     return (
       <main className='messages-screen'>
-        <div className='backarrow-position'>
-          <IconButton>
-            <ArrowBackIosNewIcon className='messages-header'/>
-          </IconButton>
-        </div>
-  
         {/* Screen Title */}
         <div className='tittle-container'>
           <h1 className='message-title'>Messages</h1>
         </div>
+        
+        <Stories/>
+
         {/* Search Message */}
         <div className='searchbar-container'>
           <SearchIcon/>

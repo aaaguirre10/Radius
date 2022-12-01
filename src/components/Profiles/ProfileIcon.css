@@ -1,0 +1,37 @@
+.storyBorder {
+  padding: 2px;
+  background: linear-gradient(
+    200deg,
+    25%,
+    50%,
+    75%,
+    100%
+  );
+  border-radius: 50%;
+}
+
+.profileIcon {
+  border-radius: 50%;
+  border: 2px solid rgb(104, 184, 211);
+  display: block;
+
+}
+
+.profileIcon:hover {
+    cursor: pointer;
+}
+
+.profileIcon.small {
+    width: 25px;
+    height: 25px;
+}
+
+.profileIcon.medium {
+    width: 35px;
+    height: 35px;
+}
+
+.profileIcon.big {
+    width: 60px;
+    height: 60px;
+}

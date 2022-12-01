@@ -93,7 +93,7 @@ function Signup() {
           <div className="col-12">
             {imgURL && (
               <div
-                className="card border-info shadow-lg "
+                className="card border-info shadow-lg mx-auto my-1 rounded-circle"
                 style={{ width: "10rem" }}
               >
                 <img src={imgURL} alt="dicebar" style={{ height: "10rem" }} />
