@@ -22,39 +22,7 @@ class Profile extends Component {
         id: sessionStorage.getItem('id')    
       }
     }
-     
-
-
-    // handleSubmit = async (event) => {
-    //     //Submit profile
-    //     event.preventDefault();
-    //     event.stopPropagation();
-    //     const id = sessionStorage.getItem('id');
-
-    //     //Refactoring opportunity,
-    //     //extract methods to generate public/protected/private requests
-    //     // firstName = document.getElementById('formBasicFirstName').value;
-    //     // lastName = document.getElementById('formBasicLastName').value;
-    //     // bio = document.getElementById('formBasicPassword').value;
-    //     const submitted = await submitProfile(
-    //     id,
-    //     'signature_placeholder',
-    //     {
-    //         'firstName': firstName,
-    //         'lastName': lastName,
-    //         'bio': bio,
-    //         'pic_url': imgURL
-    //     },
-    //     {'message':id/*temp*/},
-    //     {'message':id/*temp*/});
-
-    //     if (submitted) {
-    //     navigate('/nearby');
-    //     } else {
-    //     alert('Error creating logging in please try again');
-    //     }
-    // }
-
+    
     fetchProfile = async () => {
       const profileResponse = await fetchProfileLogin(this.state.id);
       const public_data = profileResponse['public_data'];
