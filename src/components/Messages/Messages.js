@@ -10,6 +10,7 @@ import Navbar from '../Navbar/Navbar';
 import { fetchConversations } from '../../backend/messages'
 import Stories from '../Stories/Stories';
 import { DiscFullOutlined, ThirtyFpsSelect } from '@mui/icons-material';
+import { fetchProfileLogin } from '../../backend/login';
 
 
 class Messages extends Component {
@@ -23,12 +24,23 @@ class Messages extends Component {
   
   fetchData = async () => {
     const conversationsFetched = await fetchConversations(sessionStorage.getItem('id'));
+    let participants = [];
+    await Promise.all(
+      conversationsFetched.map(async function (userId) {
+        const response = await fetchProfileLogin(userId)
+        const profile = {
+          id: response['id'],
+          userName: response['public_data']['userName'],
+          imgURL: response['public_data']['imgURL']
+        };
+        participants = [...participants, profile];
+      })
+    ) 
     
-    console.log('conv fetched below');
-    console.log(conversationsFetched)
     this.setState({
-      conversations: conversationsFetched
-    })
+      conversations: conversationsFetched,
+      participants: participants
+    });
   }
 
 
@@ -45,7 +57,10 @@ class Messages extends Component {
           <h1 className='message-title'>Messages</h1>
         </div>
         
-        <Stories/>
+        <div className='stories-container'>
+          <Stories/>
+        </div>
+        
 
         {/* Search Message */}
         <div className='searchbar-container'>
@@ -55,29 +70,17 @@ class Messages extends Component {
   
         {/* Message Section */}
         <div className='messages-container'>
-  
-          <Chat id={"leor5d4"} userName={'leor5d4'}/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
-          <Chat/>
+          {
+            this.state.participants?.map(user => {
+              console.log('user below');
+              console.log(user);
+              return (
+                <Chat key={user.id} id={user.id} user={user}/>
+              );
+            })
+          }
         </div>
+        
         <div>
           <Navbar/>
         </div>

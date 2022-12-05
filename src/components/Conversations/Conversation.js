@@ -6,10 +6,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PhotoCameraIcon from '@mui/icons-material/PhotoCamera';
 import IndividualMessage from './IndividualMessage';
 // import Chat from '../Messages/Chat';
-import { getMessages, sendMessages } from '../../backend/sendMessage';
+import { getMessages, sendMessages } from '../../backend/messages';
 import { useState} from "react";
 import {useEffect} from "react";
-import { fetchProfileLogin } from '../../backend/login';
+import {sha256} from 'js-sha256';
 
 function Conversation() {
     if(sessionStorage.getItem('id') == null){
@@ -43,7 +43,7 @@ function Conversation() {
         e.stopPropagation();
         let messageValue = document.getElementById('message').value;
 
-        let id = messageValue; //make SHA
+        let id = sha256(messageValue); //make SHA
         const submitted = await sendMessages( // @TODO refactor (set this as sendMessage())
         id,
         {'sender': sessionStorage.getItem('id')},
@@ -104,13 +104,12 @@ function Conversation() {
     
     useEffect(() => {
         async function fetchData() {
-            // ...
+            // ...           
             const interval = setInterval(() => {
                 renderPreviousMessages();
                 }, 10000);
             return () => clearInterval(interval);
         }
-        
         
       }, []);
 
