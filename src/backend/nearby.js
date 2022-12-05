@@ -64,7 +64,7 @@ export async function fetchNearby() {
                 imgUrl: imgUrl,
                 bio: bio
               }
-
+              
               nearbyPeople.push(toAdd);
               console.log(nearbyPeople);
               return 0;

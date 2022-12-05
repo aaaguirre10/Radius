@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Nearby.css";
-import Cards from "../Cards/Cards";
+import Card from "../Cards/Cards";
 import Navbar from "../Navbar/Navbar";
 import { sha256 } from "js-sha256";
 import { fetchNearby, sendFriendRequest } from '../../backend/nearby';
@@ -14,26 +14,28 @@ class Nearby extends Component {
       page: 1,
       total_pages: null,
     };
+    this.loadNearbyUsers = this.loadNearbyUsers.bind(this);
   }
 
   // uppercase = (word) => {
   //   return word.charAt(0).toUpperCase() + word.slice(1);
   // };
 
-  loadMore = () => {
-    this.setState(
-      (prevState) => ({
-        page: prevState.page + 1,
-        scrolling: true,
-      }),
-      this.loadNearbyUsers
-    );
-  };
+  // loadMore = () => {
+  //   this.setState(
+  //     (prevState) => ({
+  //       page: prevState.page + 1,
+  //       scrolling: true,
+  //     }),
+  //     this.loadNearbyUsers
+  //   );
+  // };
 
   loadNearbyUsers = async () => {
-  
-    this.setState({
-      nearbyUsers: await fetchNearby(),
+    const response = await fetchNearby();
+    alert('responded');
+    this.setState(previousState => {
+      return {nearbyUsers: response}
     });
   };
 
@@ -71,11 +73,11 @@ class Nearby extends Component {
         </div>
 
         <div className="cards-container">
-          {this.state.nearbyUsers.map((user) => (
-            <div>
-              <Cards user={user} />
-            </div>
-          ))}
+          {this.state.nearbyUsers.map((user) =>{
+            return (<div>
+              <Card user={user}/>
+            </div>)
+          })}
         </div>
         <div>
           <Navbar />
